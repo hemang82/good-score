@@ -14,6 +14,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Outfit', sans-serif;
 }
 
+/* =====================================================
+   GLOBAL TEXT SIZE SYNC
+   Bumps Tailwind's small text classes up one step so
+   all body/description text is consistently readable
+   across every page (index, privacy, terms, etc.)
+   text-xs  → now renders at ~14.5px  (was ~13px)
+   text-sm  → now renders at ~16.5px  (was ~15px)
+   text-base → now renders at ~18.5px (was ~17.5px)
+===================================================== */
+.text-xs  { font-size: 0.85rem  !important; line-height: 1.55rem !important; }
+.text-sm  { font-size: 0.97rem  !important; line-height: 1.65rem !important; }
+.text-base{ font-size: 1.08rem  !important; line-height: 1.8rem  !important; }
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
