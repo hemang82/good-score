@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodScore - Improve Your Credit Score & Download Credit Reports</title>
+  <meta name="description" content="Check your credit score for free, improve your credit health, track reports, and receive personalized improvement plans with GoodScore.">
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Dynamic Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#C7F041',
+            'dark-green': '#014421',
+            'secondary-green': '#2F9E44',
+            'bg-light': '#F7F8F7',
+            'text-primary': '#222222',
+            'text-secondary': '#666666',
+            'border-light': '#E5E5E5',
+          },
+          boxShadow: {
+            'premium': '0 10px 30px -10px rgba(1, 68, 33, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02)',
+            'premium-hover': '0 20px 45px -12px rgba(1, 68, 33, 0.15), 0 1px 5px rgba(0, 0, 0, 0.03)',
+            'glow': '0 0 20px rgba(199, 240, 65, 0.4)',
+          },
+          borderRadius: {
+            'premium-sm': '16px',
+            'premium': '24px',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS for custom keyframes and advanced utilities -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="bg-bg-light text-text-primary selection:bg-primary selection:text-dark-green">
+
+  <!-- ====================================================
+       1. STICKY HEADER
+       ==================================================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent py-4">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center focus:outline-none">
+        <svg class="h-12 w-auto" viewBox="0 0 400 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- GOOD -->
+          <text x="45" y="46" font-family="'Playfair Display', 'Georgia', serif" font-size="34" font-weight="900" fill="#0C2340" letter-spacing="1">GOOD</text>
+          
+          <!-- Gauge Group -->
+          <g transform="translate(20, 0)">
+            <!-- Left Dark Green Arc -->
+            <path d="M 152 46 A 28 28 0 0 1 180 18 L 180 26 A 20 20 0 0 0 160 46 Z" fill="#1b5e3a" />
+            <!-- Right Light Green Arc -->
+            <path d="M 180 18 A 28 28 0 0 1 208 46 L 200 46 A 20 20 0 0 0 180 26 Z" fill="#2f9e44" />
+            <!-- Center Pivot -->
+            <circle cx="180" cy="43" r="4.5" fill="#1b5e3a" />
+            <!-- Needle -->
+            <path d="M 178 44 L 199 21 L 182.5 40 Z" fill="#0C2340" />
+          </g>
+
+          <!-- SCORE -->
+          <text x="245" y="46" font-family="'Playfair Display', 'Georgia', serif" font-size="34" font-weight="900" fill="#0C2340" letter-spacing="1">SCORE</text>
+          
+          <!-- Subtitle -->
+          <text x="200" y="66" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600" fill="#5A6A80" text-anchor="middle" letter-spacing="0.5">Personal Finance Indicator</text>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-text-primary">
+        <a href="#" class="nav-link transition-colors hover:text-dark-green py-2">Home</a>
+        <a href="#features" class="nav-link transition-colors hover:text-dark-green py-2">Features</a>
+        <a href="#credit-report" class="nav-link transition-colors hover:text-dark-green py-2">Credit Report</a>
+        <a href="#improvement-plan" class="nav-link transition-colors hover:text-dark-green py-2">Improvement Plan</a>
+        <a href="#bill-payments" class="nav-link transition-colors hover:text-dark-green py-2">Bill Payments</a>
+        <a href="#contact" class="nav-link transition-colors hover:text-dark-green py-2">Contact</a>
+      </nav>
+
+      <!-- Header CTA -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="#download" class="bg-primary hover:bg-opacity-95 text-dark-green font-bold text-sm px-6 py-3 rounded-full transition-all duration-300 pulse-button-ring shadow-md hover:scale-[1.02] active:scale-[0.98] text-center">
+          Download App
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-dark-green p-2 focus:outline-none" aria-label="Toggle Navigation Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white border-b border-border-light shadow-xl py-6 px-8 flex flex-col gap-5 text-base font-semibold text-text-primary transition-all duration-300">
+      <a href="#" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Home</a>
+      <a href="#features" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Features</a>
+      <a href="#credit-report" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Credit Report</a>
+      <a href="#improvement-plan" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Improvement Plan</a>
+      <a href="#bill-payments" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Bill Payments</a>
+      <a href="#contact" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Contact</a>
+      <a href="#download" class="w-full bg-primary hover:bg-opacity-95 text-dark-green font-bold text-center py-3.5 rounded-full transition-all duration-300 mt-2 block">
+        Download App
+      </a>
+    </div>
+  </header>
+
+  <!-- Padding to prevent content clip under sticky header -->
+  <div class="h-24"></div>
+
+  <!-- ====================================================
+       2. HERO SECTION
+       ==================================================== -->
+  <section class="relative max-w-7xl mx-auto px-6 md:px-12 py-12 lg:py-20 flex flex-col lg:flex-row items-center gap-12 overflow-visible">
+    
+    <!-- Hero Left Side -->
+    <div class="flex-1 text-center lg:text-left reveal active">
+      
+      <!-- Premium Badge -->
+      <!-- <div class="inline-flex items-center gap-2 bg-[#E1F7B5] border border-[#BDEB70] px-4 py-1.5 rounded-full text-xs font-bold text-dark-green tracking-wide mb-6 uppercase">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        #1 Credit Score Improvement App
+      </div> -->
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-dark-green leading-[1.1] mb-6 tracking-tight font-['Outfit']">
+        Improve Your <span class="gradient-text-green">Credit Score</span> Smarter & Faster
+      </h1>
+
+      <p class="text-text-secondary text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">
+        Monitor your credit health, receive personalized improvement plans, download detailed reports, and unlock better financial opportunities.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+        <a href="#download" class="w-full sm:w-auto bg-dark-green hover:bg-[#023118] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:scale-[1.02] active:scale-[0.98] text-center">
+          Check My Score
+        </a>
+        <a href="#download" class="w-full sm:w-auto text-center border-2 border-dark-green text-dark-green hover:bg-dark-green hover:text-white font-bold px-8 py-3.5 rounded-full transition-all duration-300">
+          Download App
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Right Side: Dynamic Mobile Mockups -->
+    <div class="flex-1 relative w-full flex justify-center items-center py-8 lg:py-0 min-h-[450px] md:min-h-[550px] reveal active">
+      
+      <!-- Visual Background Glow -->
+      <div class="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-primary/20 blur-[100px] z-0"></div>
+
+      <!-- Main Phone Mockup (Credit Report) -->
+      <div class="relative z-10 w-[240px] md:w-[280px] aspect-[9/18.5] bg-white rounded-[32px] md:rounded-[40px] shadow-2xl border-8 border-dark-green overflow-hidden transform -rotate-6 translate-x-4 md:translate-x-8">
+        
+        <!-- Screen Top Notch -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 h-5 bg-dark-green rounded-b-xl z-20 flex items-center justify-center">
+          <div class="w-10 h-1.5 bg-[#ffffff30] rounded-full"></div>
+        </div>
+
+        <!-- App Screen Content -->
+        <div class="w-full h-full bg-bg-light pt-6 flex flex-col">
+          
+          <!-- Screen Header -->
+          <div class="px-4 py-2 flex items-center justify-between border-b border-border-light bg-white">
+            <span class="text-[11px] font-black text-dark-green tracking-wider uppercase font-['Outfit']">GoodScore</span>
+            <div class="flex gap-1">
+              <span class="w-1.5 h-1.5 bg-secondary-green rounded-full"></span>
+              <span class="w-1.5 h-1.5 bg-[#C7F041] rounded-full"></span>
+            </div>
+          </div>
+
+          <!-- Screen Score Panel -->
+          <div class="p-3 bg-white m-3 rounded-premium-sm border border-border-light shadow-sm flex flex-col items-center">
+            <span class="text-[10px] text-text-secondary font-medium">YOUR CREDIT SCORE</span>
+            
+            <!-- SVG Semi-gauge -->
+            <div class="relative w-28 h-16 mt-1 flex items-center justify-center">
+              <svg class="w-full h-full" viewBox="0 0 100 50">
+                <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#E5E5E5" stroke-width="8" stroke-linecap="round"/>
+                <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="url(#hero-gauge-grad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="125" stroke-dashoffset="15"/>
+                <defs>
+                  <linearGradient id="hero-gauge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FF5D5D"/>
+                    <stop offset="50%" stop-color="#FFA825"/>
+                    <stop offset="100%" stop-color="#2F9E44"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="absolute bottom-1 flex flex-col items-center">
+                <span class="text-lg font-black text-dark-green leading-none">812</span>
+                <span class="text-[8px] text-secondary-green font-bold uppercase tracking-wider">Excellent</span>
+              </div>
+            </div>
+            
+            <span class="text-[8px] text-text-secondary mt-1">Updated on 10 Mar 2026</span>
+          </div>
+
+          <!-- Active HDFC Card Mockup Inside Screen -->
+          <div class="mx-3 p-3 bg-white rounded-premium-sm border border-border-light shadow-sm flex flex-col gap-2">
+            <div class="flex justify-between items-center text-[10px]">
+              <span class="font-bold text-dark-green">HDFC Credit Card</span>
+              <span class="bg-[#EAF9EC] text-secondary-green text-[8px] px-1.5 py-0.5 rounded font-bold">Active</span>
+            </div>
+            
+            <!-- Utilization Progress -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-[8px] text-text-secondary">
+                <span>Credit Utilization</span>
+                <span class="font-bold text-dark-green">35.7%</span>
+              </div>
+              <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-secondary-green rounded-full" style="width: 35.7%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Phone Mockup (Improvement Tasks) -->
+      <div class="absolute z-20 w-[210px] md:w-[245px] aspect-[9/18.5] bg-white rounded-[28px] md:rounded-[36px] shadow-2xl border-8 border-dark-green overflow-hidden transform rotate-6 translate-x-28 md:translate-x-36 -translate-y-6">
+        
+        <!-- Screen Notch -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-4.5 bg-dark-green rounded-b-lg z-20"></div>
+
+        <!-- App Screen Content -->
+        <div class="w-full h-full bg-bg-light pt-5 flex flex-col text-[10px]">
+          
+          <!-- Screen Header -->
+          <div class="px-3 py-1.5 flex items-center justify-between border-b border-border-light bg-white font-bold text-dark-green">
+            <span>Score Boost Plan</span>
+            <span class="text-secondary-green">00/05 Done</span>
+          </div>
+
+          <!-- App Tasks List -->
+          <div class="p-2 space-y-2">
+            
+            <!-- Mini Task 1 -->
+            <div class="p-2 bg-white rounded-lg border border-border-light shadow-sm flex flex-col gap-1.5">
+              <span class="font-bold text-dark-green text-[9px]">Check Credit Report Errors</span>
+              <div class="flex justify-between items-center mt-1">
+                <span class="text-[7px] text-red-500 font-bold bg-red-50 px-1 rounded">Urgent Action</span>
+                <span class="bg-primary text-dark-green font-bold text-[7px] px-2 py-0.5 rounded">Fix Now</span>
+              </div>
+            </div>
+
+            <!-- Mini Task 2 -->
+            <div class="p-2 bg-white rounded-lg border border-border-light shadow-sm flex flex-col gap-1.5">
+              <span class="font-bold text-dark-green text-[9px]">Refresh latest Credit Score</span>
+              <div class="flex justify-between items-center mt-1">
+                <span class="text-[7px] text-text-secondary">Ready to update</span>
+                <span class="bg-primary text-dark-green font-bold text-[7px] px-2 py-0.5 rounded">Refresh</span>
+              </div>
+            </div>
+
+            <!-- Mini Task 3 -->
+            <div class="p-2 bg-white rounded-lg border border-border-light shadow-sm flex flex-col gap-1.5">
+              <span class="font-bold text-dark-green text-[9px]">Set Bill Payment Reminder</span>
+              <div class="flex justify-between items-center mt-1">
+                <span class="text-[7px] text-text-secondary">Avoid delays</span>
+                <span class="bg-primary text-dark-green font-bold text-[7px] px-2 py-0.5 rounded">Remind</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Cards with Hover & Animations -->
+      <!-- Card 1: Score Badge -->
+      <div class="absolute left-[-20px] top-[40px] md:top-[60px] z-30 bg-white premium-shadow border border-border-light rounded-premium-sm p-3 flex items-center gap-3 animate-float-1 hover:scale-105 transition-transform duration-300">
+        <div class="w-10 h-10 rounded-full bg-[#EBFCE6] flex items-center justify-center text-secondary-green font-bold text-sm">
+          ✓
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-dark-green">Credit Score 812</h4>
+          <p class="text-[10px] text-text-secondary">Excellent Rating</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Improvement Active -->
+      <div class="absolute left-[-10px] bottom-[60px] md:bottom-[90px] z-30 bg-white premium-shadow border border-border-light rounded-premium-sm p-3.5 flex items-center gap-3 animate-float-2 hover:scale-105 transition-transform duration-300">
+        <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-dark-green font-black">
+          ⚡
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-dark-green">Improvement Plan</h4>
+          <p class="text-[10px] text-secondary-green font-bold">Active & Tracking</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Credit Report Ready -->
+      <div class="absolute right-[-20px] bottom-[100px] md:bottom-[130px] z-30 bg-white premium-shadow border border-border-light rounded-premium-sm p-3 flex items-center gap-3 animate-float-1 hover:scale-105 transition-transform duration-300">
+        <div class="w-9 h-9 rounded-full bg-[#EBFCE6] flex items-center justify-center text-secondary-green">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-dark-green">Credit Report</h4>
+          <p class="text-[10px] text-text-secondary">Ready to Download</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       3. TRUST SECTION
+       ==================================================== -->
+  <section class="bg-white py-16 border-y border-border-light">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+      
+      <h2 class="text-sm font-extrabold uppercase tracking-widest text-secondary-green mb-10 font-['Outfit'] reveal">
+        Trusted By Thousands Of Users
+      </h2>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 reveal">
+        
+        <!-- Stat Item 1 -->
+        <div class="flex flex-col items-center p-6 rounded-premium border border-[#F0F2F0] hover:border-primary/50 transition-colors duration-300">
+          <div class="text-3xl md:text-4xl font-extrabold text-dark-green mb-2 font-['Outfit'] stat-number" data-target="100000" data-suffix="+">0</div>
+          <span class="text-xs md:text-sm text-text-secondary font-medium">Active App Users</span>
+        </div>
+
+        <!-- Stat Item 2 -->
+        <div class="flex flex-col items-center p-6 rounded-premium border border-[#F0F2F0] hover:border-primary/50 transition-colors duration-300">
+          <div class="text-3xl md:text-4xl font-extrabold text-dark-green mb-2 font-['Outfit'] stat-number" data-target="50000" data-suffix="+">0</div>
+          <span class="text-xs md:text-sm text-text-secondary font-medium">Reports Generated</span>
+        </div>
+
+        <!-- Stat Item 3 -->
+        <div class="flex flex-col items-center p-6 rounded-premium border border-[#F0F2F0] hover:border-primary/50 transition-colors duration-300">
+          <div class="text-3xl md:text-4xl font-extrabold text-dark-green mb-2 font-['Outfit'] flex items-center justify-center">
+            <span class="stat-number" data-target="4.8" data-decimal="true">0</span>
+            <span class="text-primary text-2xl ml-1">★</span>
+          </div>
+          <span class="text-xs md:text-sm text-text-secondary font-medium">App Rating (Play/iOS)</span>
+        </div>
+
+        <!-- Stat Item 4 -->
+        <div class="flex flex-col items-center p-6 rounded-premium border border-[#F0F2F0] hover:border-primary/50 transition-colors duration-300">
+          <div class="text-3xl md:text-4xl font-extrabold text-dark-green mb-2 font-['Outfit'] stat-number" data-target="99" data-suffix="%">0</div>
+          <span class="text-xs md:text-sm text-text-secondary font-medium">User Satisfaction</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       4. FEATURES SECTION
+       ==================================================== -->
+  <section id="features" class="max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-28">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-4">
+        Everything You Need To Build A Better Credit Score
+      </h2>
+      <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+        Access an array of built-in financial features modeled to analyze, correct, and build your credit profile sustainably.
+      </p>
+    </div>
+
+    <!-- Feature Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+      
+      <!-- Feature Card 1 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Free Credit Score Check</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Instantly check your updated credit score for free, compiled directly from prime credit bureaus.
+        </p>
+      </div>
+
+      <!-- Feature Card 2 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Personalized Plans</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Follow a tailor-made roadmap listing specific tasks calculated to increase your score quickly.
+        </p>
+      </div>
+
+      <!-- Feature Card 3 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Report Downloads</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Download thorough, clean, and interactive credit reports outlining your entire history.
+        </p>
+      </div>
+
+      <!-- Feature Card 4 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Credit Utilization</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Receive smart warnings and alerts keeping your credit utilization safely under the 30% limit.
+        </p>
+      </div>
+
+      <!-- Feature Card 5 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Dispute Management</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          File disputes against reporting errors directly from the app dashboard, error-free.
+        </p>
+      </div>
+
+      <!-- Feature Card 6 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">EMI Calculator</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Quickly simulate dynamic monthly payments for various loans to keep your debt profile lean.
+        </p>
+      </div>
+
+      <!-- Feature Card 7 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Bill Payments</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Track, schedule, and pay utility bills on time to lock in optimal payment histories.
+        </p>
+      </div>
+
+      <!-- Feature Card 8 -->
+      <div class="bg-white rounded-premium p-8 border border-border-light premium-shadow premium-border-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-primary/20 text-dark-green flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-dark-green mb-3 font-['Outfit']">Credit Expert Support</h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          Schedule individual consulting calls with certified professionals to resolve major reports.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       5. HOW IT WORKS
+       ==================================================== -->
+  <section id="improvement-plan" class="bg-white py-20 lg:py-28 border-y border-border-light">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-4">
+          How It Works
+        </h2>
+        <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+          Improving your score is a structured process. Here is the step-by-step journey we take you through.
+        </p>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="relative timeline-line reveal">
+        
+        <!-- Step 1 -->
+        <div class="relative flex flex-col md:flex-row items-center md:justify-between mb-16 md:mb-24 last:mb-0">
+          <div class="w-full md:w-[45%] text-center md:text-right order-2 md:order-1 mt-4 md:mt-0">
+            <h3 class="text-lg md:text-xl font-bold text-dark-green mb-2 font-['Outfit']">Step 1: Check Your Score</h3>
+            <p class="text-text-secondary text-xs md:text-sm leading-relaxed max-w-md md:ml-auto">
+              Initialize your GoodScore profile. We pull your latest files from top bureaus securely without impacting your score.
+            </p>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-primary text-dark-green flex items-center justify-center font-bold text-sm z-10 order-1 md:order-2 border-4 border-white shadow-md">
+            1
+          </div>
+          <div class="w-full md:w-[45%] order-3 hidden md:block"></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex flex-col md:flex-row items-center md:justify-between mb-16 md:mb-24 last:mb-0">
+          <div class="w-full md:w-[45%] order-3 md:order-1 hidden md:block"></div>
+          <div class="w-10 h-10 rounded-full bg-primary text-dark-green flex items-center justify-center font-bold text-sm z-10 order-1 md:order-2 border-4 border-white shadow-md">
+            2
+          </div>
+          <div class="w-full md:w-[45%] text-center md:text-left order-2 mt-4 md:mt-0">
+            <h3 class="text-lg md:text-xl font-bold text-dark-green mb-2 font-['Outfit']">Step 2: Get Personalized Plan</h3>
+            <p class="text-text-secondary text-xs md:text-sm leading-relaxed max-w-md">
+              Our AI engine checks your historical limits, debts, and errors to structure a custom score improvement guide.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex flex-col md:flex-row items-center md:justify-between mb-16 md:mb-24 last:mb-0">
+          <div class="w-full md:w-[45%] text-center md:text-right order-2 md:order-1 mt-4 md:mt-0">
+            <h3 class="text-lg md:text-xl font-bold text-dark-green mb-2 font-['Outfit']">Step 3: Complete Recommended Tasks</h3>
+            <p class="text-text-secondary text-xs md:text-sm leading-relaxed max-w-md md:ml-auto">
+              Log into the app daily and check off items like clearing high utilization values or correcting reporting errors.
+            </p>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-primary text-dark-green flex items-center justify-center font-bold text-sm z-10 order-1 md:order-2 border-4 border-white shadow-md">
+            3
+          </div>
+          <div class="w-full md:w-[45%] order-3 hidden md:block"></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex flex-col md:flex-row items-center md:justify-between mb-16 md:mb-24 last:mb-0">
+          <div class="w-full md:w-[45%] order-3 md:order-1 hidden md:block"></div>
+          <div class="w-10 h-10 rounded-full bg-primary text-dark-green flex items-center justify-center font-bold text-sm z-10 order-1 md:order-2 border-4 border-white shadow-md">
+            4
+          </div>
+          <div class="w-full md:w-[45%] text-center md:text-left order-2 mt-4 md:mt-0">
+            <h3 class="text-lg md:text-xl font-bold text-dark-green mb-2 font-['Outfit']">Step 4: Track Progress</h3>
+            <p class="text-text-secondary text-xs md:text-sm leading-relaxed max-w-md">
+              Review live charts showing score increases, limit improvements, active cards, and clean payment tracks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="relative flex flex-col md:flex-row items-center md:justify-between last:mb-0">
+          <div class="w-full md:w-[45%] text-center md:text-right order-2 md:order-1 mt-4 md:mt-0">
+            <h3 class="text-lg md:text-xl font-bold text-dark-green mb-2 font-['Outfit']">Step 5: Increase Credit Score</h3>
+            <p class="text-text-secondary text-xs md:text-sm leading-relaxed max-w-md md:ml-auto">
+              Reach your target score of 750+ or higher, opening access to high-tier premium rewards credit cards and low rates.
+            </p>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-primary text-dark-green flex items-center justify-center font-bold text-sm z-10 order-1 md:order-2 border-4 border-white shadow-md">
+            5
+          </div>
+          <div class="w-full md:w-[45%] order-3 hidden md:block"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       6. SCORE IMPROVEMENT SECTION
+       ==================================================== -->
+  <section class="max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-28">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- Visual Widget Grid on Left -->
+      <div class="flex-1 w-full relative grid grid-cols-1 sm:grid-cols-2 gap-6 order-2 lg:order-1 reveal">
+        
+        <!-- Widget 1: Daily Monitoring -->
+        <div class="bg-white p-6 rounded-premium border border-border-light premium-shadow flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-lg bg-[#EAF9EC] text-secondary-green flex items-center justify-center text-lg">
+            🔍
+          </div>
+          <div>
+            <h4 class="font-bold text-dark-green mb-1 text-sm font-['Outfit']">Daily Monitoring</h4>
+            <p class="text-[11px] text-text-secondary leading-relaxed">
+              We monitor credit bureau updates every 24 hours to keep your plan up to date.
+            </p>
+          </div>
+        </div>
+
+        <!-- Widget 2: Fake Loan Detection -->
+        <div class="bg-white p-6 rounded-premium border border-border-light premium-shadow flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-lg bg-[#FFF4E5] text-[#FFA825] flex items-center justify-center text-lg">
+            ⚠️
+          </div>
+          <div>
+            <h4 class="font-bold text-dark-green mb-1 text-sm font-['Outfit']">Fake Loan Detection</h4>
+            <p class="text-[11px] text-text-secondary leading-relaxed">
+              Instantly catch reporting errors, duplicate accounts, and unauthorized lines.
+            </p>
+          </div>
+        </div>
+
+        <!-- Widget 3: Credit Analysis -->
+        <div class="bg-white p-6 rounded-premium border border-border-light premium-shadow flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-lg bg-[#EBF5FF] text-[#3B82F6] flex items-center justify-center text-lg">
+            📊
+          </div>
+          <div>
+            <h4 class="font-bold text-dark-green mb-1 text-sm font-['Outfit']">Credit Analysis</h4>
+            <p class="text-[11px] text-text-secondary leading-relaxed">
+              Understand parameters like age, payment history, and mix affecting your score.
+            </p>
+          </div>
+        </div>
+
+        <!-- Widget 4: Expert Support & Videos -->
+        <div class="bg-white p-6 rounded-premium border border-border-light premium-shadow flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-lg bg-[#F3E5F5] text-[#9C27B0] flex items-center justify-center text-lg">
+            🎥
+          </div>
+          <div>
+            <h4 class="font-bold text-dark-green mb-1 text-sm font-['Outfit']">Video Guidance</h4>
+            <p class="text-[11px] text-text-secondary leading-relaxed">
+              Access byte-sized visual lessons clarifying complex banking terms easily.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description Block on Right -->
+      <div class="flex-1 order-1 lg:order-2 reveal">
+        <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-6">
+          Increase Your Credit Score To 750+
+        </h2>
+        
+        <p class="text-text-secondary text-sm md:text-base leading-relaxed mb-8">
+          Reaching 750 is not an overnight event—it requires systematic coordination of accounts, credit lines, and payments. GoodScore guides you automatically, highlighting exactly what to fix.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#EAF9EC] text-secondary-green flex items-center justify-center text-xs mt-0.5">✓</span>
+            <p class="text-xs md:text-sm text-text-primary"><span class="font-bold text-dark-green">Real-time alerts</span> on unauthorized inquiries.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#EAF9EC] text-secondary-green flex items-center justify-center text-xs mt-0.5">✓</span>
+            <p class="text-xs md:text-sm text-text-primary"><span class="font-bold text-dark-green">Auto-generation</span> of dispute application drafts.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#EAF9EC] text-secondary-green flex items-center justify-center text-xs mt-0.5">✓</span>
+            <p class="text-xs md:text-sm text-text-primary"><span class="font-bold text-dark-green">Personalized checklists</span> synced directly with banking data.</p>
+          </div>
+        </div>
+
+        <a href="#download" class="bg-dark-green hover:bg-[#023118] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md text-center inline-block">
+          Check My Score Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       7. CREDIT REPORT SECTION
+       ==================================================== -->
+  <section id="credit-report" class="bg-white py-20 lg:py-28 border-y border-border-light">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- Copy Block Left -->
+      <div class="flex-1 reveal">
+        <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-6">
+          Premium Credit Report Analysis
+        </h2>
+        <p class="text-text-secondary text-sm md:text-base leading-relaxed mb-8">
+          Get a visual breakdown of your debt lines, card histories, open loans, and active accounts. No more scrolling through complicated bank sheets.
+        </p>
+
+        <!-- Bullet Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-[#F0F2F0] hover:border-primary/50 transition-colors">
+            <span class="text-lg">💳</span>
+            <span class="text-xs font-bold text-dark-green">Card Utilization Track</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-[#F0F2F0] hover:border-primary/50 transition-colors">
+            <span class="text-lg">📁</span>
+            <span class="text-xs font-bold text-dark-green">Loan Account Audits</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-[#F0F2F0] hover:border-primary/50 transition-colors">
+            <span class="text-lg">📝</span>
+            <span class="text-xs font-bold text-dark-green">Closed Account Records</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-[#F0F2F0] hover:border-primary/50 transition-colors">
+            <span class="text-lg">🔒</span>
+            <span class="text-xs font-bold text-dark-green">Bureau Protected Audits</span>
+          </div>
+        </div>
+
+        <a href="#download" class="bg-primary hover:bg-opacity-95 text-dark-green font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md text-center inline-block">
+          Download Your Report
+        </a>
+      </div>
+
+      <!-- Credit Report Mockup Right -->
+      <div class="flex-1 w-full flex justify-center reveal">
+        <div class="w-full max-w-lg bg-bg-light border border-border-light rounded-premium p-6 md:p-8 shadow-premium flex flex-col gap-6">
+          
+          <!-- Mock Header Info -->
+          <div class="flex items-center justify-between">
+            <h3 class="text-base md:text-lg font-bold text-dark-green font-['Outfit']">Credit Report</h3>
+            <span class="text-xs font-bold text-[#FFA825] bg-[#FFF8EE] px-2.5 py-1 rounded-full border border-[#FFE1B5]">Updated Monthly</span>
+          </div>
+
+          <!-- Gauge and rating -->
+          <div class="bg-white p-5 rounded-premium border border-border-light shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <!-- SVG Semi-gauge -->
+            <div class="relative w-36 h-20 flex items-center justify-center">
+              <svg class="w-full h-full" viewBox="0 0 100 50">
+                <!-- Outer Arc -->
+                <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#E5E5E5" stroke-width="8" stroke-linecap="round"/>
+                <!-- Filled Arc -->
+                <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="url(#report-gauge-grad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="125" stroke-dashoffset="15"/>
+                <defs>
+                  <linearGradient id="report-gauge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FF5D5D"/>
+                    <stop offset="50%" stop-color="#FFA825"/>
+                    <stop offset="100%" stop-color="#2F9E44"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="absolute bottom-1 flex flex-col items-center">
+                <span class="text-2xl font-black text-dark-green leading-none">812</span>
+                <span class="text-[9px] text-[#A6C0A8] font-bold">OF 900</span>
+              </div>
+            </div>
+
+            <!-- Score rating text -->
+            <div class="text-center md:text-left flex flex-col justify-center gap-1">
+              <span class="text-lg font-bold text-secondary-green font-['Outfit']">Excellent Rating</span>
+              <p class="text-xs text-text-secondary">Your payment history and credit utilization profiles look optimal.</p>
+            </div>
+          </div>
+
+          <!-- Filters tabs (All / Loans / Cards) -->
+          <div class="flex gap-2">
+            <button data-filter="all" class="report-filter-tab flex-1 bg-primary text-dark-green text-xs font-bold py-2.5 rounded-full transition-all duration-200">
+              All
+            </button>
+            <button data-filter="loans" class="report-filter-tab flex-1 bg-white text-text-secondary border border-border-light text-xs font-bold py-2.5 rounded-full transition-all duration-200 hover:bg-gray-50">
+              Loans
+            </button>
+            <button data-filter="cards" class="report-filter-tab flex-1 bg-white text-text-secondary border border-border-light text-xs font-bold py-2.5 rounded-full transition-all duration-200 hover:bg-gray-50">
+              Cards
+            </button>
+          </div>
+
+          <!-- Inner Sub Tabs -->
+          <div class="flex border-b border-border-light text-xs font-bold">
+            <button data-subtab="high-usage" class="report-sub-tab flex-1 pb-3 text-center border-b-2 border-dark-green text-dark-green">
+              High Usage 1
+            </button>
+            <button data-subtab="other" class="report-sub-tab flex-1 pb-3 text-center border-b-2 border-transparent text-text-secondary hover:text-dark-green">
+              Other 4
+            </button>
+            <button data-subtab="closed" class="report-sub-tab flex-1 pb-3 text-center border-b-2 border-transparent text-text-secondary hover:text-dark-green">
+              Closed 2
+            </button>
+          </div>
+
+          <!-- Section Contents -->
+          <div class="space-y-4">
+            
+            <!-- High Usage Content -->
+            <div id="high-utilization-section" class="space-y-4">
+              
+              <!-- Utilization Alert -->
+              <div class="p-4 bg-[#FFF8EE] rounded-premium-sm border border-[#FFE1B5] flex flex-col gap-2.5">
+                <span class="text-xs font-bold text-[#FFA825]">More than 30% credit Utilization</span>
+                <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-dark-green rounded-full" style="width: 35.7%;"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-text-secondary font-medium">
+                  <span>Limit Used: ₹1,49,921</span>
+                  <span>Total Limit: ₹4,20,000</span>
+                </div>
+              </div>
+
+              <!-- High Usage Account Card -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex flex-col gap-3" data-category="cards">
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center gap-3">
+                    <span class="text-xl">💳</span>
+                    <div>
+                      <h4 class="text-xs font-bold text-dark-green">HDFC Bank Credit Card</h4>
+                      <p class="text-[10px] text-text-secondary">XXXX 3999 • Issued 24 Sep 2023</p>
+                    </div>
+                  </div>
+                  <span class="bg-[#EAF9EC] text-secondary-green text-[10px] px-2 py-0.5 rounded font-bold uppercase">Active</span>
+                </div>
+                <div class="border-t border-[#F5F5F5] pt-3 flex justify-between text-[10px] text-text-secondary">
+                  <span>Balance: ₹1,49,921</span>
+                  <span>Utilization: <span class="text-red-500 font-bold">91.06%</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other Active Content (Hidden by default) -->
+            <div id="other-active-section" class="hidden space-y-3">
+              
+              <!-- Card 2 -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex items-center justify-between" data-category="cards">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">💳</span>
+                  <div>
+                    <h4 class="text-xs font-bold text-dark-green">ICICI Bank Credit Card</h4>
+                    <p class="text-[10px] text-text-secondary">XXXX 1022 • Issued 10 May 2022</p>
+                  </div>
+                </div>
+                <span class="bg-[#EAF9EC] text-secondary-green text-[10px] px-2 py-0.5 rounded font-bold uppercase">Active</span>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex items-center justify-between" data-category="cards">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">💳</span>
+                  <div>
+                    <h4 class="text-xs font-bold text-dark-green">SBI Credit Card</h4>
+                    <p class="text-[10px] text-text-secondary">XXXX 4552 • Issued 15 Dec 2021</p>
+                  </div>
+                </div>
+                <span class="bg-[#EAF9EC] text-secondary-green text-[10px] px-2 py-0.5 rounded font-bold uppercase">Active</span>
+              </div>
+
+              <!-- Loan 1 -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex items-center justify-between" data-category="loans">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🏠</span>
+                  <div>
+                    <h4 class="text-xs font-bold text-dark-green">HDFC Home Loan</h4>
+                    <p class="text-[10px] text-text-secondary">Acct #229988 • Issued 02 Jan 2024</p>
+                  </div>
+                </div>
+                <span class="bg-[#EAF9EC] text-secondary-green text-[10px] px-2 py-0.5 rounded font-bold uppercase">Active</span>
+              </div>
+
+              <!-- Loan 2 -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex items-center justify-between" data-category="loans">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🚗</span>
+                  <div>
+                    <h4 class="text-xs font-bold text-dark-green">Axis Car Loan</h4>
+                    <p class="text-[10px] text-text-secondary">Acct #114422 • Issued 12 Jun 2023</p>
+                  </div>
+                </div>
+                <span class="bg-[#EAF9EC] text-secondary-green text-[10px] px-2 py-0.5 rounded font-bold uppercase">Active</span>
+              </div>
+            </div>
+
+            <!-- Closed Accounts (Hidden by default) -->
+            <div id="closed-accounts-section" class="hidden space-y-3">
+              
+              <!-- Closed 1 -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex items-center justify-between" data-category="loans">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🚗</span>
+                  <div>
+                    <h4 class="text-xs font-bold text-dark-green">SBI Personal Loan</h4>
+                    <p class="text-[10px] text-text-secondary">Acct #100223 • Closed 14 Jan 2025</p>
+                  </div>
+                </div>
+                <span class="bg-gray-100 text-text-secondary text-[10px] px-2 py-0.5 rounded font-bold uppercase">Closed</span>
+              </div>
+
+              <!-- Closed 2 -->
+              <div class="account-card bg-white p-4 rounded-premium-sm border border-border-light shadow-sm flex items-center justify-between" data-category="cards">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">💳</span>
+                  <div>
+                    <h4 class="text-xs font-bold text-dark-green">Amex Gold Card</h4>
+                    <p class="text-[10px] text-text-secondary">XXXX 5592 • Closed 10 Feb 2025</p>
+                  </div>
+                </div>
+                <span class="bg-gray-100 text-text-secondary text-[10px] px-2 py-0.5 rounded font-bold uppercase">Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       8. BILL PAYMENT SECTION
+       ==================================================== -->
+  <section id="bill-payments" class="max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-28">
+    
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-4">
+        Pay Bills & Protect Your Score
+      </h2>
+      <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+        Paying your utility bills on time is the single easiest way to construct a perfect payment record. Pay directly through GoodScore.
+      </p>
+    </div>
+
+    <!-- Payments Service Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 reveal">
+      
+      <!-- 1. Mobile Prepaid -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Mobile Prepaid</span>
+      </a>
+
+      <!-- 2. Broadband Postpaid -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5.05 3.636a8.959 8.959 0 0113.9 0M7.757 6.343a5.99 5.99 0 018.486 0M10.586 9.172a3 3 0 014.243 0M12 13v6m-4 0h8" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Broadband Postpaid</span>
+      </a>
+
+      <!-- 3. Cable TV -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 4V2m10 2V2M3 8h18m-2 12H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Cable TV</span>
+      </a>
+
+      <!-- 4. Credit Card -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Credit Card</span>
+      </a>
+
+      <!-- 5. DTH -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m8 0h-4M12 3a9 9 0 019 9" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">DTH</span>
+      </a>
+
+      <!-- 6. Echallan -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2zM12 9V7" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Echallan</span>
+      </a>
+
+      <!-- 7. Education Fee -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11v8a1 1 0 001 1h2a1 1 0 001-1v-8" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Education Fee</span>
+      </a>
+
+      <!-- 8. Electricity Bill -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Electricity Bill</span>
+      </a>
+
+      <!-- 9. EV Recharge -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">EV Recharge</span>
+      </a>
+
+      <!-- 10. FASTag Recharge -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0zM4 9h16l1 4v4H3v-4l1-4z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">FASTag Recharge</span>
+      </a>
+
+      <!-- 11. Gas Line -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v4h2v2h-2v2l1 1H9l1-1v-2H8v-2h2V5L9 4z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Gas Line</span>
+      </a>
+
+      <!-- 12. Insurance -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Insurance</span>
+      </a>
+
+      <!-- 13. Loan Repayment -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Loan Repayment</span>
+      </a>
+
+      <!-- 14. LPG Gas -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 10a7 7 0 00-14 0v9a2 2 0 002 2h10a2 2 0 002-2v-9zM9 5h6M12 2v3" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">LPG Gas</span>
+      </a>
+
+      <!-- 15. Water Bill -->
+      <a href="#" class="bg-white p-6 rounded-premium border border-border-light flex flex-col items-center gap-4 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-dark-green text-white flex items-center justify-center shrink-0 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.418 0-8-3.582-8-8 0-4.418 8-11 8-11s8 6.582 8 11c0 4.418-3.582 8-8 8z" />
+          </svg>
+        </div>
+        <span class="text-xs font-bold text-dark-green text-center leading-tight">Water Bill</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       9. SCORE IMPROVEMENT TASKS (INTERACTIVE)
+       ==================================================== -->
+  <section class="bg-white py-20 lg:py-28 border-y border-border-light">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+      
+      <!-- Interactive Checklist Left -->
+      <div class="flex-1 w-full space-y-4 order-2 lg:order-1 reveal">
+        
+        <h3 class="text-sm font-extrabold text-secondary-green uppercase tracking-wider mb-6 font-['Outfit']">Interactive Task Planner</h3>
+
+        <!-- Task Card 1 -->
+        <div class="task-card bg-bg-light border border-border-light p-5 rounded-premium flex items-center justify-between gap-4 transition-all duration-300 hover:border-primary">
+          <div class="flex items-center gap-4">
+            <div class="task-status-icon w-8 h-8 rounded-full bg-white text-border-light flex items-center justify-center border border-border-light shrink-0">
+              <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+            </div>
+            <div>
+              <h4 class="text-xs md:text-sm font-bold text-dark-green leading-snug">Check Credit Report Errors</h4>
+              <p class="text-[10px] md:text-xs text-text-secondary">Check for wrong address logs or duplicate account flags.</p>
+            </div>
+          </div>
+          <button data-done="false" class="task-cta-btn bg-primary hover:bg-opacity-95 text-dark-green font-bold text-[10px] md:text-xs px-4 py-2.5 rounded-full transition-all duration-200 shrink-0">
+            Check Now
+          </button>
+        </div>
+
+        <!-- Task Card 2 -->
+        <div class="task-card bg-bg-light border border-border-light p-5 rounded-premium flex items-center justify-between gap-4 transition-all duration-300 hover:border-primary">
+          <div class="flex items-center gap-4">
+            <div class="task-status-icon w-8 h-8 rounded-full bg-white text-border-light flex items-center justify-center border border-border-light shrink-0">
+              <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+            </div>
+            <div>
+              <h4 class="text-xs md:text-sm font-bold text-dark-green leading-snug">Refresh Credit Score</h4>
+              <p class="text-[10px] md:text-xs text-text-secondary">Update score directly from bureaus to review latest logs.</p>
+            </div>
+          </div>
+          <button data-done="false" class="task-cta-btn bg-primary hover:bg-opacity-95 text-dark-green font-bold text-[10px] md:text-xs px-4 py-2.5 rounded-full transition-all duration-200 shrink-0">
+            Refresh Now
+          </button>
+        </div>
+
+        <!-- Task Card 3 -->
+        <div class="task-card bg-bg-light border border-border-light p-5 rounded-premium flex items-center justify-between gap-4 transition-all duration-300 hover:border-primary">
+          <div class="flex items-center gap-4">
+            <div class="task-status-icon w-8 h-8 rounded-full bg-white text-border-light flex items-center justify-center border border-border-light shrink-0">
+              <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+            </div>
+            <div>
+              <h4 class="text-xs md:text-sm font-bold text-dark-green leading-snug">Set Bill Payment Reminder</h4>
+              <p class="text-[10px] md:text-xs text-text-secondary">Never miss another utility billing date. Prevent delays.</p>
+            </div>
+          </div>
+          <button data-done="false" class="task-cta-btn bg-primary hover:bg-opacity-95 text-dark-green font-bold text-[10px] md:text-xs px-4 py-2.5 rounded-full transition-all duration-200 shrink-0">
+            Set Reminder
+          </button>
+        </div>
+
+        <!-- Task Card 4 -->
+        <div class="task-card bg-bg-light border border-border-light p-5 rounded-premium flex items-center justify-between gap-4 transition-all duration-300 hover:border-primary">
+          <div class="flex items-center gap-4">
+            <div class="task-status-icon w-8 h-8 rounded-full bg-white text-border-light flex items-center justify-center border border-border-light shrink-0">
+              <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+            </div>
+            <div>
+              <h4 class="text-xs md:text-sm font-bold text-dark-green leading-snug">Reduce Credit Utilization</h4>
+              <p class="text-[10px] md:text-xs text-text-secondary">Pay credit card dues down to bring utilization under 30%.</p>
+            </div>
+          </div>
+          <button data-done="false" class="task-cta-btn bg-primary hover:bg-opacity-95 text-dark-green font-bold text-[10px] md:text-xs px-4 py-2.5 rounded-full transition-all duration-200 shrink-0">
+            Pay Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Dashboard Progress Right -->
+      <div class="flex-1 order-1 lg:order-2 reveal">
+        <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-6">
+          Increase your Credit Score to 750+
+        </h2>
+        <p class="text-text-secondary text-sm md:text-base leading-relaxed mb-8">
+          Try completing the mock checklist items on the left. See how completing steps moves your progress status.
+        </p>
+
+        <!-- Mock Plan Card -->
+        <div class="bg-bg-light border border-border-light rounded-premium p-6 md:p-8 shadow-premium flex flex-col gap-6">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-bold text-text-secondary">PLAN PROGRESS STATUS</span>
+            <span class="font-bold text-dark-green bg-primary px-2.5 py-1 rounded-full uppercase tracking-wider text-[10px]">Active Improvement</span>
+          </div>
+
+          <!-- Headline -->
+          <div class="space-y-1.5">
+            <h4 class="text-lg md:text-xl font-extrabold text-dark-green font-['Outfit'] leading-tight">Improve credit by 30 points!</h4>
+            <p class="text-xs text-text-secondary">Completing all 4 actions updates the bureau database registers.</p>
+          </div>
+
+          <!-- Progress track -->
+          <div class="space-y-3">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-text-secondary">Completed Actions</span>
+              <span id="progress-steps-text" class="text-secondary-green">00 / 04</span>
+            </div>
+            <div class="w-full h-3 bg-white border border-border-light rounded-full overflow-hidden p-0.5">
+              <div id="progress-line-fill" class="h-full bg-secondary-green rounded-full transition-all duration-500" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- Visual Node Timeline -->
+          <div class="flex items-center justify-between relative mt-2 px-1">
+            <div class="absolute left-0 right-0 h-0.5 bg-gray-200 top-1/2 transform -translate-y-1/2 z-0"></div>
+            
+            <div class="progress-timeline-step w-7 h-7 rounded-full bg-gray-200 text-gray-400 font-bold text-xs flex items-center justify-center relative z-10 transition-all duration-300">1</div>
+            <div class="progress-timeline-step w-7 h-7 rounded-full bg-gray-200 text-gray-400 font-bold text-xs flex items-center justify-center relative z-10 transition-all duration-300">2</div>
+            <div class="progress-timeline-step w-7 h-7 rounded-full bg-gray-200 text-gray-400 font-bold text-xs flex items-center justify-center relative z-10 transition-all duration-300">3</div>
+            <div class="progress-timeline-step w-7 h-7 rounded-full bg-gray-200 text-gray-400 font-bold text-xs flex items-center justify-center relative z-10 transition-all duration-300">4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       10. GOODSCORE BENEFITS
+       ==================================================== -->
+  <section class="max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-28">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-4">
+        Why Choose GoodScore?
+      </h2>
+      <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+        See how managing your finances with GoodScore makes a difference compared to standard manual checks.
+      </p>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="overflow-x-auto rounded-premium border border-border-light shadow-premium bg-white reveal">
+      <table class="w-full text-left border-collapse min-w-[600px]">
+        <thead>
+          <tr class="bg-bg-light border-b border-border-light">
+            <th class="p-6 text-sm font-bold text-dark-green uppercase tracking-wider font-['Outfit'] w-1/3">Feature Details</th>
+            <th class="p-6 text-sm font-bold text-[#EA5E5E] uppercase tracking-wider font-['Outfit'] w-1/3 bg-red-50/20">Without GoodScore</th>
+            <th class="p-6 text-sm font-bold text-secondary-green uppercase tracking-wider font-['Outfit'] w-1/3 bg-emerald-50/20">With GoodScore</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border-light text-xs md:text-sm text-text-primary">
+          <!-- Row 1 -->
+          <tr>
+            <td class="p-6 font-semibold text-dark-green">Monitoring Updates</td>
+            <td class="p-6 text-text-secondary bg-red-50/10">Manual checks once a year (often costs money)</td>
+            <td class="p-6 font-medium bg-emerald-50/10">Real-time daily alerts, absolutely free</td>
+          </tr>
+          <!-- Row 2 -->
+          <tr>
+            <td class="p-6 font-semibold text-dark-green">Personalized Reports</td>
+            <td class="p-6 text-text-secondary bg-red-50/10">Hard-to-read PDF text tables and sheets</td>
+            <td class="p-6 font-medium bg-emerald-50/10">Interactive charts and card categories</td>
+          </tr>
+          <!-- Row 3 -->
+          <tr>
+            <td class="p-6 font-semibold text-dark-green">Dispute Filing</td>
+            <td class="p-6 text-text-secondary bg-red-50/10">Write manual complaint letters to bureaus</td>
+            <td class="p-6 font-medium bg-emerald-50/10">One-click draft generators, automated submissions</td>
+          </tr>
+          <!-- Row 4 -->
+          <tr>
+            <td class="p-6 font-semibold text-dark-green">Expert Guidance</td>
+            <td class="p-6 text-text-secondary bg-red-50/10">Costly advisors or confusing forum checks</td>
+            <td class="p-6 font-medium bg-emerald-50/10">On-demand chats with certified credit advisors</td>
+          </tr>
+          <!-- Row 5 -->
+          <tr>
+            <td class="p-6 font-semibold text-dark-green">Improvement Progress</td>
+            <td class="p-6 text-text-secondary bg-red-50/10">No tracking or checklist guidelines</td>
+            <td class="p-6 font-medium bg-emerald-50/10">Dynamic interactive task tracks and indicators</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       11. EXPERT GUIDANCE SECTION
+       ==================================================== -->
+  <section class="max-w-7xl mx-auto px-6 md:px-12 pb-20 lg:pb-28 reveal">
+    <div class="bg-dark-green rounded-premium p-8 md:p-12 lg:p-16 text-white flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden">
+      
+      <!-- Design Circle Elements -->
+      <div class="absolute w-64 h-64 rounded-full bg-primary/10 top-[-50px] right-[-50px] pointer-events-none"></div>
+      <div class="absolute w-48 h-48 rounded-full bg-[#2F9E44]/10 bottom-[-50px] left-[-50px] pointer-events-none"></div>
+
+      <!-- Copy Column -->
+      <div class="flex-[1.2] space-y-6 text-center lg:text-left">
+        <span class="inline-block bg-[#05572C] text-primary border border-[#0A733C] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Direct Advisor Support</span>
+        
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight font-['Outfit'] leading-tight">
+          Need Expert Guidance?
+        </h2>
+        
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Connect with GoodScore experts and get professional assistance to resolve deep issues, clean histories, and improve your overall credit profile.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+          <button class="bg-primary hover:bg-opacity-95 text-dark-green font-bold px-8 py-3.5 rounded-full transition-all duration-200">
+            Chat Now
+          </button>
+          <button class="border border-white hover:bg-white/10 text-white font-bold px-8 py-3.5 rounded-full transition-all duration-200">
+            Book Consultation
+          </button>
+        </div>
+      </div>
+
+      <!-- Mockup Advisor badge right -->
+      <div class="flex-1 w-full flex justify-center">
+        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-premium p-6 w-full max-w-sm flex flex-col items-center gap-4 text-center">
+          
+          <!-- Avatar Icon Profile -->
+          <div class="relative w-20 h-20 rounded-full border-4 border-primary bg-bg-light overflow-hidden flex items-center justify-center">
+            <span class="text-4xl">👨‍💼</span>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-white text-base">Rahul Sharma</h4>
+            <p class="text-primary text-[10px] uppercase font-bold tracking-widest mt-0.5">Senior Credit Advisor</p>
+          </div>
+
+          <div class="flex gap-1.5 text-xs text-primary font-bold bg-[#045228] px-3.5 py-1.5 rounded-full">
+            <span>★★★★★</span>
+            <span class="text-white">4.9/5 Rating</span>
+          </div>
+
+          <p class="text-gray-300 text-[11px] leading-relaxed">
+            "We have helped over 10,000 users identify duplicate loan files and successfully dispute wrong bureau records."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       12. TESTIMONIALS
+       ==================================================== -->
+  <section class="bg-white py-20 lg:py-28 border-y border-border-light">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-4">
+          What Our Users Say
+        </h2>
+        <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+          Read real stories from people who took back control of their financial profile through GoodScore.
+        </p>
+      </div>
+
+      <!-- Testimonials Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+        
+        <!-- Card 1 -->
+        <div class="bg-bg-light border border-border-light rounded-premium p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <!-- Stars -->
+            <div class="text-primary text-lg font-bold">★★★★★</div>
+            <p class="text-text-primary text-xs md:text-sm leading-relaxed italic">
+              "My credit score increased from 640 to 770 in just 4 months. Following the action tasks checklist worked exactly as promised. Absolute game-changer!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-border-light pt-4">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-dark-green text-xs font-['Outfit']">
+              AM
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-dark-green">Ananya Mishra</h4>
+              <p class="text-[10px] text-secondary-green font-bold">Score Improved by 130 pts</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-bg-light border border-border-light rounded-premium p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <!-- Stars -->
+            <div class="text-primary text-lg font-bold">★★★★★</div>
+            <p class="text-text-primary text-xs md:text-sm leading-relaxed italic">
+              "The credit report audit flagged a duplicate auto loan account I didn't recognize. Using the draft dispute generator, I had it removed, saving my score."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-border-light pt-4">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-dark-green text-xs font-['Outfit']">
+              VP
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-dark-green">Vikram Patel</h4>
+              <p class="text-[10px] text-secondary-green font-bold">Dispute Resolved successfully</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-bg-light border border-border-light rounded-premium p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <!-- Stars -->
+            <div class="text-primary text-lg font-bold">★★★★★</div>
+            <p class="text-text-primary text-xs md:text-sm leading-relaxed italic">
+              "Personalized plan structures are extremely clear and doable. It pointed out my high credit utilization details that standard bank apps never showed."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-border-light pt-4">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-dark-green text-xs font-['Outfit']">
+              RN
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-dark-green">Rohan Nair</h4>
+              <p class="text-[10px] text-secondary-green font-bold">Score Improved to 812</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       13. FAQ SECTION
+       ==================================================== -->
+  <section class="max-w-4xl mx-auto px-6 py-20 lg:py-28">
+    
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-4">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+        Have questions about checks, safety, or scoring? Here are our replies.
+      </p>
+    </div>
+
+    <!-- Accordion Wrapper -->
+    <div class="space-y-4 reveal">
+      
+      <!-- FAQ 1 -->
+      <div class="faq-item bg-white border border-border-light rounded-premium overflow-hidden transition-colors">
+        <button class="faq-header w-full p-6 text-left flex items-center justify-between font-bold text-dark-green text-sm md:text-base focus:outline-none">
+          <span>What is GoodScore?</span>
+          <span class="faq-icon text-text-secondary transition-transform duration-200">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p class="px-6 pb-6 text-xs md:text-sm text-text-secondary leading-relaxed">
+            GoodScore is a premium credit management and score improvement platform. We analyze your credit histories, flag bureau reporting errors, and compile personalized step plans to build your financial standing.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item bg-white border border-border-light rounded-premium overflow-hidden transition-colors">
+        <button class="faq-header w-full p-6 text-left flex items-center justify-between font-bold text-dark-green text-sm md:text-base focus:outline-none">
+          <span>How often can I check my score?</span>
+          <span class="faq-icon text-text-secondary transition-transform duration-200">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p class="px-6 pb-6 text-xs md:text-sm text-text-secondary leading-relaxed">
+            You can check your score as many times as you like. We pull your logs as a "soft inquiry," meaning it has absolutely zero negative impact on your actual score calculation.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item bg-white border border-border-light rounded-premium overflow-hidden transition-colors">
+        <button class="faq-header w-full p-6 text-left flex items-center justify-between font-bold text-dark-green text-sm md:text-base focus:outline-none">
+          <span>How does score improvement work?</span>
+          <span class="faq-icon text-text-secondary transition-transform duration-200">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p class="px-6 pb-6 text-xs md:text-sm text-text-secondary leading-relaxed">
+            Our app analyzes critical score criteria—such as payment records, age of accounts, and credit utilization percentages. We then list specific tasks like adjusting bill schedules or filing error corrections to boost your rating step by step.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item bg-white border border-border-light rounded-premium overflow-hidden transition-colors">
+        <button class="faq-header w-full p-6 text-left flex items-center justify-between font-bold text-dark-green text-sm md:text-base focus:outline-none">
+          <span>Can I raise disputes directly?</span>
+          <span class="faq-icon text-text-secondary transition-transform duration-200">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p class="px-6 pb-6 text-xs md:text-sm text-text-secondary leading-relaxed">
+            Yes! GoodScore provides template draft dispute builders that sync directly with the Credit Bureaus, making filing error reports simple and fast.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item bg-white border border-border-light rounded-premium overflow-hidden transition-colors">
+        <button class="faq-header w-full p-6 text-left flex items-center justify-between font-bold text-dark-green text-sm md:text-base focus:outline-none">
+          <span>Is my data secure on GoodScore?</span>
+          <span class="faq-icon text-text-secondary transition-transform duration-200">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p class="px-6 pb-6 text-xs md:text-sm text-text-secondary leading-relaxed">
+            Absolutely. We utilize bank-grade 256-bit AES encryption alongside strict OAuth authorization models, ensuring your financial information remains fully private and protected at all times.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       14. APP DOWNLOAD SECTION
+       ==================================================== -->
+  <section id="download" class="bg-dark-green border-y border-border-light py-20 overflow-hidden relative">
+    
+    <!-- Background Circle glows -->
+    <div class="absolute w-80 h-80 rounded-full bg-primary/5 top-[-100px] left-[-100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16">
+      
+      <!-- Copy Block Left -->
+      <div class="flex-1 text-center lg:text-left text-white space-y-6 reveal">
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight font-['Outfit'] leading-tight">
+          Take Control Of Your Credit Journey
+        </h2>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Download GoodScore today and start improving your financial future. Complete tasks, build histories, and unlock prime banking offers.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+          <!-- Android Button -->
+          <a href="#" class="w-full sm:w-auto bg-primary hover:bg-opacity-95 text-dark-green font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2.5 transition-all duration-300 shadow-md">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current shrink-0" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186A1.85 1.85 0 0 1 3 20.732V3.268c0-.584.226-1.125.609-1.454zM14.996 13.2l3.414 3.414L4.852 22.8c-.015.008-.03.013-.045.02L14.996 13.2zm4.722-1.748c.55.32.55.976 0 1.296l-3.523 2.05-2.008-2.008 2.008-2.008 3.523 2.05zm-4.722-1.452L4.807 1.18c.015.007.03.012.045.02l13.558 6.186-3.414 3.414z"/>
+            </svg>
+            <span>Download Android App</span>
+          </a>
+          <!-- iOS Button -->
+          <a href="#" class="w-full sm:w-auto bg-[#045228] border border-[#0B7A3E] hover:bg-[#06612F] text-white font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2.5 transition-all duration-300 shadow-md">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current shrink-0" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.49-.62.71-1.16 1.85-1.01 2.96 1.12.09 2.28-.58 2.94-1.39z"/>
+            </svg>
+            <span>Download iOS App</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- App Mockup Stack Right -->
+      <div class="flex-1 w-full flex justify-center items-center relative min-h-[300px] reveal">
+        <!-- Main phone mockup -->
+        <div class="w-[200px] md:w-[240px] aspect-[9/18.5] bg-[#002B14] rounded-[32px] shadow-2xl border-4 border-white/20 overflow-hidden transform rotate-[-6deg] translate-x-4">
+          <div class="w-full h-full bg-gradient-to-b from-dark-green to-[#001D0E] flex flex-col items-center justify-center text-center p-6 gap-4">
+            <span class="text-4xl text-primary font-black font-['Outfit']">Good</span>
+            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">✓</div>
+            <p class="text-[10px] text-gray-400">Score Check & Improvement Platform</p>
+          </div>
+        </div>
+
+        <!-- Overlapping second phone mockup -->
+        <div class="absolute w-[180px] md:w-[220px] aspect-[9/18.5] bg-[#002B14] rounded-[28px] shadow-2xl border-4 border-white/20 overflow-hidden transform rotate-[6deg] translate-x-32 translate-y-6">
+          <div class="w-full h-full bg-gradient-to-b from-dark-green to-[#001D0E] flex flex-col items-center justify-center text-center p-6 gap-4">
+            <span class="text-4xl text-white font-black font-['Outfit']">Score</span>
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary font-black">⚡</div>
+            <p class="text-[10px] text-gray-400">Personalized Task Progress Logs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       15. FOOTER
+       ==================================================== -->
+  <footer class="bg-white border-t border-border-light py-12">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-8">
+      
+      <!-- Top Section: Logo, Nav, Socials -->
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center focus:outline-none shrink-0">
+          <svg class="h-10 w-auto" viewBox="0 0 400 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="45" y="46" font-family="'Playfair Display', 'Georgia', serif" font-size="34" font-weight="900" fill="#0C2340" letter-spacing="1">GOOD</text>
+            <g transform="translate(20, 0)">
+              <path d="M 152 46 A 28 28 0 0 1 180 18 L 180 26 A 20 20 0 0 0 160 46 Z" fill="#1b5e3a" />
+              <path d="M 180 18 A 28 28 0 0 1 208 46 L 200 46 A 20 20 0 0 0 180 26 Z" fill="#2f9e44" />
+              <circle cx="180" cy="43" r="4.5" fill="#1b5e3a" />
+              <path d="M 178 44 L 199 21 L 182.5 40 Z" fill="#0C2340" />
+            </g>
+            <text x="245" y="46" font-family="'Playfair Display', 'Georgia', serif" font-size="34" font-weight="900" fill="#0C2340" letter-spacing="1">SCORE</text>
+            <text x="200" y="66" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600" fill="#5A6A80" text-anchor="middle" letter-spacing="0.5">Personal Finance Indicator</text>
+          </svg>
+        </a>
+
+        <!-- Center Nav Links -->
+        <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs md:text-sm font-semibold text-text-primary">
+          <a href="index.html" class="hover:text-dark-green transition-colors">Home</a>
+          <a href="index.html#features" class="hover:text-dark-green transition-colors">Features</a>
+          <a href="index.html#credit-report" class="hover:text-dark-green transition-colors">Credit Report</a>
+          <a href="index.html#improvement-plan" class="hover:text-dark-green transition-colors">Improvement Plan</a>
+          <a href="index.html#bill-payments" class="hover:text-dark-green transition-colors">Bill Payments</a>
+          <a href="mailto:support@goodscore.in" class="hover:text-dark-green transition-colors">Contact</a>
+        </nav>
+
+        <!-- Social Icons (Accurate SVG icons) -->
+        <div class="flex gap-3 shrink-0">
+          <a href="#" aria-label="X (formerly Twitter)" class="w-8 h-8 rounded-full border border-border-light flex items-center justify-center text-text-secondary hover:border-dark-green hover:text-dark-green hover:bg-gray-50 transition-all duration-200">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full border border-border-light flex items-center justify-center text-text-secondary hover:border-dark-green hover:text-dark-green hover:bg-gray-50 transition-all duration-200">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-full border border-border-light flex items-center justify-center text-text-secondary hover:border-dark-green hover:text-dark-green hover:bg-gray-50 transition-all duration-200">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider line -->
+      <div class="w-full border-t border-border-light"></div>
+
+      <!-- Bottom Section: Copyright & Legal Links -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
+        <span>© 2026 GoodScore. All rights reserved.</span>
+        <div class="flex items-center gap-6">
+          <a href="privacy-policy.html" class="hover:text-dark-green transition-colors">Privacy Policy</a>
+          <a href="terms-and-conditions.html" class="hover:text-dark-green transition-colors">Terms & Conditions</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ====================================================
+       SCORE CHECKER MODAL (INTERACTIVE FLOW)
+       ==================================================== -->
+  <!-- Score Checker Modal removed (site is for showcase/guideline purposes) -->
+
+  <!-- Main JavaScript File link -->
+  <script src="app.js"></script>
+</body>
+</html>

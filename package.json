@@ -1,0 +1,15 @@
+{
+  "name": "goodscore-landing-page",
+  "version": "1.0.0",
+  "description": "Premium Landing Page for GoodScore Mobile Application",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000"
+  },
+  "keywords": [
+    "fintech",
+    "landing-page",
+    "credit-score"
+  ],
+  "author": "",
+  "license": "ISC"
+}
