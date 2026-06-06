@@ -4,6 +4,7 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
+  font-size: 17.5px;
   background-color: #F7F8F7;
   color: #222222;
   overflow-x: hidden;
