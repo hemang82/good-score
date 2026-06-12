@@ -39,7 +39,7 @@
   <!-- Custom CSS for font styling and navigation transitions -->
   <link rel="stylesheet" href="index.css">
 </head>
-<body class="bg-bg-light text-text-primary selection:bg-primary selection:text-dark-green">
+<body class="bg-bg-light text-text-primary selection:bg-primary selection:text-dark-green overflow-x-hidden w-full relative">
 
   <!-- ====================================================
        STICKY HEADER
@@ -88,28 +88,52 @@
           Download App
         </a>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-dark-green p-2 focus:outline-none"
+        aria-label="Toggle Navigation Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu"
+      class="hidden lg:hidden absolute top-full left-0 right-0 bg-white border-b border-border-light shadow-xl py-6 px-8 flex flex-col gap-5 text-base font-semibold text-text-primary transition-all duration-300">
+      <a href="index.html" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Home</a>
+      <a href="index.html#features" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Features</a>
+      <a href="index.html#credit-report" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Credit Report</a>
+      <a href="index.html#improvement-plan" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Improvement Plan</a>
+      <a href="index.html#bill-payments" class="mobile-nav-link hover:text-dark-green transition-colors py-1">Bill Payments</a>
+      <a href="index.html#download"
+        class="w-full bg-primary hover:bg-opacity-95 text-dark-green font-bold text-center py-3.5 rounded-full transition-all duration-300 mt-2 block">
+        Download App
+      </a>
     </div>
   </header>
 
   <!-- Prevent header clipping content -->
-  <div class="h-24"></div>
+  <div class="h-20 md:h-24"></div>
 
   <!-- ====================================================
        TERMS AND CONDITIONS BODY
        ==================================================== -->
-  <main class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+  <main class="max-w-7xl mx-auto px-6 md:px-12 pt-6 pb-12 md:py-16">
     <div class="flex flex-col lg:flex-row gap-12 items-start">
       
       <!-- Left Sidebar: Section Index Links (Sticky) -->
       <aside class="w-full lg:w-1/4 lg:sticky lg:top-28 space-y-4 bg-white border border-border-light rounded-premium p-6 shadow-sm">
-        <h3 class="text-sm font-black text-dark-green uppercase tracking-wider mb-4 font-['Outfit']">Contents</h3>
+        <h3 class="text-sm font-black text-dark-green uppercase tracking-wider mb-4">Contents</h3>
         <nav class="flex flex-col gap-3.5 text-xs md:text-sm font-semibold text-text-secondary">
           <a href="#acceptance" class="hover:text-dark-green transition-colors">1. Acceptance of Terms</a>
           <a href="#eligibility" class="hover:text-dark-green transition-colors">2. User Eligibility</a>
           <a href="#bureau-authorization" class="hover:text-dark-green transition-colors">3. Bureau Authorization</a>
-          <a href="#intellectual-property" class="hover:text-dark-green transition-colors">4. Intellectual Property</a>
-          <a href="#limitations" class="hover:text-dark-green transition-colors">5. Limitations of Liability</a>
-          <a href="#governing-law" class="hover:text-dark-green transition-colors">6. Governing Law</a>
+          <a href="#user-obligations" class="hover:text-dark-green transition-colors">4. User Obligations</a>
+          <a href="#refund-policy" class="hover:text-dark-green transition-colors">5. Refund & Cancellation</a>
+          <a href="#intellectual-property" class="hover:text-dark-green transition-colors">6. Intellectual Property</a>
+          <a href="#limitations" class="hover:text-dark-green transition-colors">7. Limitations of Liability</a>
+          <a href="#dispute-resolution" class="hover:text-dark-green transition-colors">8. Dispute Resolution</a>
         </nav>
       </aside>
 
@@ -117,69 +141,81 @@
       <section class="flex-1 bg-white border border-border-light rounded-premium p-8 md:p-12 shadow-premium space-y-10">
         
         <div class="border-b border-border-light pb-6">
-          <h1 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight font-['Outfit'] mb-2">Terms & Conditions</h1>
-          <p class="text-xs text-text-secondary">Last Updated: June 6, 2026</p>
+          <h1 class="text-3xl md:text-4xl font-black text-dark-green tracking-tight mb-2">Terms & Conditions</h1>
+          <p class="text-xs text-text-secondary">Last Updated: June 12, 2026</p>
         </div>
 
         <!-- Section 1 -->
         <div id="acceptance" class="space-y-4">
-          <h2 class="text-lg md:text-xl font-bold text-dark-green font-['Outfit']">1. Acceptance of Terms</h2>
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">1. Acceptance of Terms</h2>
           <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
-            By accessing or using the GoodScore mobile application or website, you agree to comply with and be bound by these Terms & Conditions. If you do not agree to these terms, please do not use our services.
+            By accessing or using the GoodScore mobile application, website, or associated services, you agree to comply with and be fully bound by these Terms & Conditions. If you do not agree to these terms in their entirety, please do not use our platform.
           </p>
         </div>
 
         <!-- Section 2 -->
         <div id="eligibility" class="space-y-4">
-          <h2 class="text-lg md:text-xl font-bold text-dark-green font-['Outfit']">2. User Eligibility</h2>
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">2. User Eligibility</h2>
           <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
-            You must be at least 18 years of age and a resident of India with a valid Permanent Account Number (PAN) to use the services offered by GoodScore. By using this service, you represent that you meet these eligibility criteria.
+            You must be at least 18 years of age and a resident of India with a valid Permanent Account Number (PAN) to use the services offered by GoodScore. By using this service, you legally represent and warrant that you meet these eligibility criteria.
           </p>
         </div>
 
         <!-- Section 3 -->
         <div id="bureau-authorization" class="space-y-4">
-          <h2 class="text-lg md:text-xl font-bold text-dark-green font-['Outfit']">3. Bureau Authorization</h2>
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">3. Bureau Authorization</h2>
           <p class="text-text-secondary text-xs md:text-sm leading-relaxed mb-3">
-            By requesting a credit score check, you explicitly authorize GoodScore and its partner credit bureaus (e.g. Experian, Equifax, CRIF) to:
+            By requesting a credit score check, you explicitly appoint GoodScore as your authorized representative to interact with partner credit bureaus (including CIBIL, Experian, and Equifax) to:
           </p>
           <ul class="space-y-2 text-xs md:text-sm text-text-secondary list-inside">
             <li class="flex items-start gap-2.5">
               <span class="text-secondary-green font-bold">✓</span>
-              <span>Query and fetch your credit score and history reports.</span>
+              <span>Query and fetch your credit score and history reports continuously (soft inquiries).</span>
             </li>
             <li class="flex items-start gap-2.5">
               <span class="text-secondary-green font-bold">✓</span>
-              <span>Display active loan lines and credit card records in your app dashboard.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-secondary-green font-bold">✓</span>
-              <span>Keep your data updated in accordance with regular soft credit inquiries.</span>
+              <span>Display active loan lines and credit card utilization records in your app dashboard.</span>
             </li>
           </ul>
         </div>
 
         <!-- Section 4 -->
-        <div id="intellectual-property" class="space-y-4">
-          <h2 class="text-lg md:text-xl font-bold text-dark-green font-['Outfit']">4. Intellectual Property</h2>
+        <div id="user-obligations" class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">4. User Obligations</h2>
           <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
-            All content, brand names, custom SVG logo layouts, illustrations, and user interface systems are the intellectual property of GoodScore. You are prohibited from copying, modifying, or using these assets for commercial purposes without explicit permission.
+            You agree to provide true, accurate, current, and complete information about yourself as prompted by our registration forms. GoodScore reserves the right to suspend or terminate your account if any information provided is found to be false, fraudulent, or impersonating another individual.
           </p>
         </div>
 
         <!-- Section 5 -->
-        <div id="limitations" class="space-y-4">
-          <h2 class="text-lg md:text-xl font-bold text-dark-green font-['Outfit']">5. Limitations of Liability</h2>
+        <div id="refund-policy" class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">5. Refund & Cancellation</h2>
           <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
-            GoodScore compiles credit scores directly from rating bureau databases. We do not guarantee the absolute accuracy of bureau records and are not liable for any credit decisions, loan rejections, or errors reported by third-party financial institutions.
+            While basic credit checks are free, GoodScore offers premium subscription plans. Subscriptions can be canceled at any time. Refunds for premium plans are only processed if requested within 7 days of the initial transaction, provided no premium dispute templates or personalized advisor sessions were utilized.
           </p>
         </div>
 
         <!-- Section 6 -->
-        <div id="governing-law" class="space-y-4">
-          <h2 class="text-lg md:text-xl font-bold text-dark-green font-['Outfit']">6. Governing Law</h2>
+        <div id="intellectual-property" class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">6. Intellectual Property</h2>
           <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
-            These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising out of the use of our services shall be subject to the exclusive jurisdiction of the courts in Gujarat, India.
+            All content, brand names, custom UI layouts, graphics, and underlying software code are the exclusive intellectual property of GoodScore. You are strictly prohibited from copying, reverse engineering, modifying, or using these assets for commercial purposes without explicit written permission.
+          </p>
+        </div>
+
+        <!-- Section 7 -->
+        <div id="limitations" class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">7. Limitations of Liability</h2>
+          <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
+            GoodScore compiles credit scores directly from rating bureau databases. We act as a technology bridge and do not guarantee the absolute accuracy of bureau records. We are not liable for any credit decisions, loan rejections, or errors reported by third-party financial institutions.
+          </p>
+        </div>
+
+        <!-- Section 8 -->
+        <div id="dispute-resolution" class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-dark-green">8. Dispute Resolution & Governing Law</h2>
+          <p class="text-text-secondary text-xs md:text-sm leading-relaxed">
+            These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising out of the use of our services shall first be attempted to be resolved via mutual mediation. If unresolved, disputes shall be subject to the exclusive jurisdiction of the courts in Ahmedabad, Gujarat, India.
           </p>
         </div>
       </section>
@@ -216,7 +252,6 @@
           <a href="index.html#credit-report" class="hover:text-dark-green transition-colors">Credit Report</a>
           <a href="index.html#improvement-plan" class="hover:text-dark-green transition-colors">Improvement Plan</a>
           <a href="index.html#bill-payments" class="hover:text-dark-green transition-colors">Bill Payments</a>
-          <a href="index.html#contact" class="hover:text-dark-green transition-colors">Contact</a>
         </nav>
 
         <!-- Social Icons (Accurate SVG icons) -->
@@ -245,7 +280,9 @@
       <!-- Bottom Section: Copyright & Legal Links -->
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
         <span>© 2026 GoodScore. All rights reserved.</span>
-        <div class="flex items-center gap-6">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <a href="faq.html" class="hover:text-dark-green transition-colors">FAQ</a>
+          <a href="contact-us.html" class="hover:text-dark-green transition-colors">Contact Us</a>
           <a href="privacy-policy.html" class="hover:text-dark-green transition-colors">Privacy Policy</a>
           <a href="terms-and-conditions.html" class="hover:text-dark-green transition-colors font-bold text-dark-green">Terms & Conditions</a>
         </div>
@@ -253,5 +290,8 @@
 
     </div>
   </footer>
+
+  <!-- Main JavaScript File link -->
+  <script src="app.js"></script>
 </body>
 </html>
