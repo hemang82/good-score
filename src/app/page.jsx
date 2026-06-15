@@ -157,6 +157,48 @@ export default function Home() {
         }
       });
     });
+    // --- 6. FAQ Accordion ---
+    const accordionHeaders = document.querySelectorAll('.faq-header');
+    
+    const handleAccordionClick = (e) => {
+      const header = e.currentTarget;
+      const item = header.parentElement;
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.faq-icon');
+      const isOpen = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          const otherContent = otherItem.querySelector('.accordion-content');
+          if (otherContent) otherContent.style.maxHeight = null;
+          const otherIcon = otherItem.querySelector('.faq-icon');
+          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      if (!isOpen) {
+        item.classList.add('active');
+        if (content) content.style.maxHeight = content.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      } else {
+        item.classList.remove('active');
+        if (content) content.style.maxHeight = null;
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      }
+    };
+
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', handleAccordionClick);
+    });
+
+    // Cleanup for FAQ
+    const cleanupFaq = () => {
+      accordionHeaders.forEach(header => {
+        header.removeEventListener('click', handleAccordionClick);
+      });
+    };
+
   }, []);
 
   return (
