@@ -2,6 +2,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+
   --color-primary: #C7F041;
   --color-dark-green: #014421;
   --color-secondary-green: #2F9E44;
@@ -23,10 +26,20 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
   font-family: 'Lato', sans-serif;
+  font-size: 17.5px;
   background-color: #F7F8F7;
   color: #222222;
   overflow-x: hidden;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+/* GLOBAL TEXT SIZE SYNC */
+.text-xs  { font-size: 0.95rem  !important; line-height: 1.6rem !important; }
+.text-sm  { font-size: 1.05rem  !important; line-height: 1.7rem !important; }
+.text-base{ font-size: 1.15rem  !important; line-height: 1.85rem  !important; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lato', sans-serif;
