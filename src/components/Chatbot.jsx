@@ -80,7 +80,7 @@ export default function Chatbot() {
     }
   }, [messages, isOpen]);
 
-  const handleSend = (text) => {
+  const handleSend = async (text) => {
     if (!text.trim()) return;
 
     // Add user message
@@ -88,21 +88,52 @@ export default function Chatbot() {
     setMessages(newMessages);
     setInputValue("");
 
-    // Determine bot response
+    // 1. Check local FAQ exact rules first
     const lowerText = text.toLowerCase();
-    let botResponse = defaultResponse;
+    let localResponse = null;
 
     for (const rule of faqRules) {
       if (rule.keywords.some(keyword => lowerText.includes(keyword))) {
-        botResponse = rule.response;
+        localResponse = rule.response;
         break;
       }
     }
 
-    // Simulate typing delay
-    setTimeout(() => {
-      setMessages(prev => [...prev, { id: Date.now() + 1, text: botResponse, sender: "bot" }]);
-    }, 600);
+    if (localResponse) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, { id: Date.now() + 1, text: localResponse, sender: "bot" }]);
+      }, 600);
+      return;
+    }
+
+    // 2. If no local FAQ found, ask ChatGPT
+    const loadingId = Date.now() + 1;
+    setMessages(prev => [...prev, { id: loadingId, text: "Thinking...", sender: "bot", isLoading: true }]);
+
+    try {
+      const apiMessages = newMessages
+        .filter(m => !m.isLoading)
+        .map(m => ({
+          role: m.sender === 'user' ? 'user' : 'assistant',
+          content: m.text
+        }));
+
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: apiMessages })
+      });
+
+      const data = await res.json();
+      
+      setMessages(prev => 
+        prev.map(m => m.id === loadingId ? { ...m, text: data.reply || "Sorry, I couldn't understand that.", isLoading: false } : m)
+      );
+    } catch (error) {
+      setMessages(prev => 
+        prev.map(m => m.id === loadingId ? { ...m, text: "Network error. Please try again.", isLoading: false } : m)
+      );
+    }
   };
 
   return (
