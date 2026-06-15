@@ -1,74 +1,18 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
-
-const faqRules = [
-  {
-    keywords: ["hello", "hi", "hey", "good morning", "good evening", "kem cho", "namaste", "hola", "helo", "hiii", "heyy"],
-    response: "Hello there! Welcome to GoodScore. How can I help you improve your credit score today?"
-  },
-  {
-    keywords: ["thanks", "thank you", "ok", "okay", "thx", "tq", "dhanyavad", "aabhar", "kk", "okkk"],
-    response: "You're welcome! Let me know if you need help with anything else."
-  },
-  {
-    keywords: ["how are you", "hw r u", "kaise ho", "kem cho"],
-    response: "I'm just a chatbot, but I'm doing great! Ready to help you with your credit score. What do you need?"
-  },
-  {
-    keywords: ["what is goodscore", "about goodscore", "who are you", "what do you do", "su che goodscore", "goodscore kya hai", "goodscor", "godscore", "good score"],
-    response: "GoodScore is a premium credit management platform designed to help you analyze, correct, and build your credit profile sustainably. We help you reach a 750+ score!"
-  },
-  {
-    keywords: ["how it works", "how to use", "process", "work", "kevi rite kam kare", "kaise kaam karta hai", "kam", "workk", "prosess"],
-    response: "It's simple: 1) Check your score for free. 2) Follow our personalized tasks (like reducing utilization or paying bills). 3) Dispute any errors. 4) Watch your score grow!"
-  },
-  {
-    keywords: ["check score", "check my score", "free score", "know my score", "cibil", "sibil", "score check", "scor check", "chek score", "scoor", "scre", "experian", "equifax"],
-    response: "You can check your CIBIL and Experian score for free instantly! Just click the 'Check Your Score Free' button at the top of the page."
-  },
-  {
-    keywords: ["is it accurate", "real score", "saacho score", "sachu", "genuine", "acurate", "acurat"],
-    response: "Yes! We fetch your credit report directly from top credit bureaus like CIBIL, Experian, and Equifax. It's 100% accurate and official."
-  },
-  {
-    keywords: ["dispute", "error", "wrong", "mistake", "fix score", "bhul", "galat", "wrong entry", "fake loan", "fraud loan", "duplicat", "duplicate", "disput", "frod"],
-    response: "Found a fake loan or wrong entry? We provide dispute templates directly in our app to help you report it to the bureaus and get it removed quickly."
-  },
-  {
-    keywords: ["how much time to fix", "ketlo time", "kitna time", "update time", "score update"],
-    response: "Bureau updates and dispute resolutions typically take anywhere from 30 to 45 days to reflect on your official credit report."
-  },
-  {
-    keywords: ["pricing", "cost", "fee", "free", "how much", "ketla rupiya", "paisa", "paise", "price", "charg", "charge", "subscription", "plan"],
-    response: "Checking your basic credit score is 100% FREE! We also offer premium personalized plans if you want advanced, step-by-step guidance to reach 750+ faster."
-  },
-  {
-    keywords: ["safe", "security", "privacy", "secure", "data", "scam", "safe che", "safe hai", "secur", "privcy", "hacked", "leak"],
-    response: "Your data is completely safe. We use bank-grade 256-bit AES encryption. We NEVER sell your data to third parties or spam you with loan calls."
-  },
-  {
-    keywords: ["pan card", "pancard", "pan number", "pan details"],
-    response: "We need your PAN card number securely just once to fetch your official credit report from the bureaus. It is fully encrypted and safe."
-  },
-  {
-    keywords: ["contact", "support", "help", "email", "phone", "call", "customer care", "number", "helpline", "madad", "suport"],
-    response: "You can reach our support team by scrolling to the Contact section at the bottom, or emailing us directly at support@goodscore.in. We reply within 24 hours!"
-  },
-  {
-    keywords: ["download", "app", "play store", "app store", "install", "apk", "ios", "android", "dwnlod", "downlod", "mobile app"],
-    response: "You can download the GoodScore app from the Apple App Store or Google Play Store. You'll find the download links in the footer or the Contact section!"
-  }
-];
-
-const defaultResponse = "I didn't quite catch that. Try asking about checking your score, our pricing, how to dispute errors, or app security!";
+import { useChat } from '@ai-sdk/react';
+import ReactMarkdown from 'react-markdown';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { id: 1, text: "Hi! I'm the GoodScore Assistant. How can I help you today?", sender: "bot" }
-  ]);
-  const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef(null);
+
+  const [inputValue, setInputValue] = useState('');
+  const [messages, setMessages] = useState([
+    { id: 'initial-msg', role: 'assistant', content: "Hi! I'm the UPSCORE Assistant. How can I help you today?" }
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -78,62 +22,59 @@ export default function Chatbot() {
     if (isOpen) {
       scrollToBottom();
     }
-  }, [messages, isOpen]);
+  }, [messages, isOpen, error]);
 
-  const handleSend = async (text) => {
-    if (!text.trim()) return;
+  const sendToAI = async (text) => {
+    if (!text.trim() || isLoading) return;
 
-    // Add user message
-    const newMessages = [...messages, { id: Date.now(), text, sender: "user" }];
+    const userMessage = { id: Date.now().toString(), role: 'user', content: text };
+    const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-    setInputValue("");
+    setInputValue('');
+    setIsLoading(true);
+    setError(null);
 
-    // 1. Check local FAQ exact rules first
-    const lowerText = text.toLowerCase();
-    let localResponse = null;
-
-    for (const rule of faqRules) {
-      if (rule.keywords.some(keyword => lowerText.includes(keyword))) {
-        localResponse = rule.response;
-        break;
-      }
-    }
-
-    if (localResponse) {
-      setTimeout(() => {
-        setMessages(prev => [...prev, { id: Date.now() + 1, text: localResponse, sender: "bot" }]);
-      }, 600);
-      return;
-    }
-
-    // 2. If no local FAQ found, ask ChatGPT
-    const loadingId = Date.now() + 1;
-    setMessages(prev => [...prev, { id: loadingId, text: "Thinking...", sender: "bot", isLoading: true }]);
+    const botMessageId = (Date.now() + 1).toString();
+    setMessages((prev) => [...prev, { id: botMessageId, role: 'assistant', content: '' }]);
 
     try {
-      const apiMessages = newMessages
-        .filter(m => !m.isLoading)
-        .map(m => ({
-          role: m.sender === 'user' ? 'user' : 'assistant',
-          content: m.text
-        }));
-
-      const res = await fetch('/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: apiMessages })
+        body: JSON.stringify({ messages: newMessages })
       });
 
-      const data = await res.json();
-      
-      setMessages(prev => 
-        prev.map(m => m.id === loadingId ? { ...m, text: data.reply || "Sorry, I couldn't understand that.", isLoading: false } : m)
-      );
-    } catch (error) {
-      setMessages(prev => 
-        prev.map(m => m.id === loadingId ? { ...m, text: "Network error. Please try again.", isLoading: false } : m)
-      );
+      if (!response.ok) throw new Error('API Error');
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        const chunkValue = decoder.decode(value);
+
+        setMessages((prev) => 
+          prev.map((msg) => 
+            msg.id === botMessageId ? { ...msg, content: msg.content + chunkValue } : msg
+          )
+        );
+      }
+    } catch (err) {
+      setError({ message: err.message });
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    sendToAI(suggestion);
+  };
+
+  const handleManualSubmit = (e) => {
+    e.preventDefault();
+    sendToAI(inputValue);
   };
 
   return (
@@ -155,17 +96,20 @@ export default function Chatbot() {
 
       {/* Chatbot Window */}
       <div 
-        className={`fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[550px] max-h-[80vh] bg-white border border-border-light rounded-premium shadow-premium-hover flex flex-col overflow-hidden z-[999] transition-all duration-300 transform origin-bottom-right ${isOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-0 opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[600px] max-h-[80vh] bg-white border border-border-light rounded-premium shadow-premium-hover flex flex-col overflow-hidden z-[999] transition-all duration-300 transform origin-bottom-right ${isOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-0 opacity-0 pointer-events-none'}`}
       >
         {/* Chat Header */}
         <div className="bg-dark-green text-white p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-dark-green text-xs font-bold">
-              GS
+              US
             </div>
             <div>
-              <h4 className="font-bold text-sm">GoodScore Assistant</h4>
-              <p className="text-[10px] text-primary">Online • Rule-based</p>
+              <h4 className="font-bold text-sm">UPSCORE Assistant</h4>
+              <p className="text-[10px] text-primary flex items-center gap-1">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                AI Powered • Online
+              </p>
             </div>
           </div>
           <button onClick={() => setIsOpen(false)} className="text-white/70 hover:text-white transition-colors p-1">
@@ -176,10 +120,10 @@ export default function Chatbot() {
         </div>
 
         {/* Chat Messages Area */}
-        <div className="flex-1 p-4 overflow-y-auto bg-bg-light flex flex-col gap-3 custom-chat-scroll">
+        <div className="flex-1 p-4 overflow-y-auto bg-bg-light flex flex-col gap-4 custom-chat-scroll">
           {messages.map((msg) => (
-            <div key={msg.id} className={`flex items-start gap-2 max-w-[85%] ${msg.sender === 'user' ? 'self-end flex-row-reverse' : ''}`}>
-              {msg.sender === 'bot' && (
+            <div key={msg.id} className={`flex items-start gap-2 max-w-[85%] ${msg.role === 'user' ? 'self-end flex-row-reverse' : ''}`}>
+              {msg.role !== 'user' && (
                 <div className="w-6 h-6 bg-dark-green text-primary rounded-full flex items-center justify-center shrink-0 mt-1">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
@@ -187,21 +131,73 @@ export default function Chatbot() {
                   </svg>
                 </div>
               )}
-              <div className={msg.sender === 'user' ? 'bg-dark-green text-white text-sm p-3 rounded-2xl rounded-tr-sm shadow-sm' : 'bg-white border border-border-light text-text-primary text-sm p-3 rounded-2xl rounded-tl-sm shadow-sm'}>
-                {msg.text}
+              <div 
+                className={
+                  msg.role === 'user' 
+                    ? 'bg-dark-green text-white text-sm p-3 rounded-2xl rounded-tr-sm shadow-sm whitespace-pre-wrap' 
+                    : 'bg-white border border-border-light text-text-primary text-sm p-3 rounded-2xl rounded-tl-sm shadow-sm markdown-body'
+                }
+              >
+                {msg.role === 'user' ? (
+                  msg.content
+                ) : (
+                  <ReactMarkdown
+                    components={{
+                      p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                      ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2 last:mb-0" {...props} />,
+                      ol: ({node, ...props}) => <ol className="list-decimal pl-4 mb-2 last:mb-0" {...props} />,
+                      li: ({node, ...props}) => <li className="mb-1" {...props} />,
+                      strong: ({node, ...props}) => <strong className="font-bold text-dark-green" {...props} />,
+                      a: ({node, ...props}) => <a className="text-secondary-green underline hover:text-dark-green" {...props} />
+                    }}
+                  >
+                    {msg.content}
+                  </ReactMarkdown>
+                )}
               </div>
             </div>
           ))}
+          {isLoading && messages[messages.length - 1]?.role === 'user' && (
+            <div className="flex items-start gap-2 max-w-[85%]">
+              <div className="w-6 h-6 bg-dark-green text-primary rounded-full flex items-center justify-center shrink-0 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                </svg>
+              </div>
+              <div className="bg-white border border-border-light p-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 bg-text-secondary/50 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
+                <span className="w-1.5 h-1.5 bg-text-secondary/50 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
+                <span className="w-1.5 h-1.5 bg-text-secondary/50 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
+              </div>
+            </div>
+          )}
+          {error && (
+            <div className="flex items-start gap-2 max-w-[85%]">
+              <div className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center shrink-0 mt-1">
+                !
+              </div>
+              <div className="bg-red-50 border border-red-200 text-red-600 text-sm p-3 rounded-2xl rounded-tl-sm shadow-sm">
+                API Error: {error.message || "Failed to connect to AI server."}
+              </div>
+            </div>
+          )}
           <div ref={messagesEndRef} />
         </div>
 
         {/* Suggestions Area */}
-        <div className="px-4 py-2 bg-bg-light border-t border-border-light flex gap-2 overflow-x-auto whitespace-nowrap hide-scroll">
-          {["What is GoodScore?", "Check Score", "Dispute Error", "Pricing"].map((suggestion) => (
+        <div className="px-4 py-3 bg-bg-light border-t border-border-light flex gap-2 overflow-x-auto whitespace-nowrap hide-scroll">
+          {[
+            "How to improve my credit score?", 
+            "How does UPSCORE work?", 
+            "Can I pay electricity bills?", 
+            "What is the Task Planner?",
+            "How to fix fake loans?"
+          ].map((suggestion) => (
             <button
               key={suggestion}
-              onClick={() => handleSend(suggestion)}
-              className="text-xs bg-white border border-border-light text-dark-green px-3 py-1.5 rounded-full hover:bg-primary/10 hover:border-primary transition-colors shrink-0"
+              onClick={() => handleSuggestionClick(suggestion)}
+              disabled={isLoading}
+              className="text-xs font-bold bg-white border border-border-light text-dark-green px-4 py-2 rounded-full hover:bg-primary/10 hover:border-primary transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
             >
               {suggestion}
             </button>
@@ -209,24 +205,25 @@ export default function Chatbot() {
         </div>
 
         {/* Input Area */}
-        <div className="p-3 bg-white border-t border-border-light flex items-center gap-2">
+        <form onSubmit={handleManualSubmit} className="p-3 bg-white border-t border-border-light flex items-center gap-2">
           <input 
             type="text" 
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSend(inputValue)}
-            placeholder="Type a message..."
-            className="flex-1 bg-bg-light border border-border-light text-sm px-4 py-2.5 rounded-full outline-none focus:border-secondary-green transition-colors"
+            disabled={isLoading}
+            placeholder={isLoading ? "AI is typing..." : "Type a message..."}
+            className="flex-1 bg-bg-light border border-border-light text-sm px-4 py-3 rounded-full outline-none focus:border-secondary-green transition-colors disabled:opacity-50"
           />
           <button 
-            onClick={() => handleSend(inputValue)}
-            className="w-10 h-10 bg-dark-green text-white rounded-full flex items-center justify-center hover:bg-secondary-green transition-colors shrink-0 shadow-sm"
+            type="submit"
+            disabled={isLoading || !inputValue.trim()}
+            className="w-11 h-11 bg-dark-green text-white rounded-full flex items-center justify-center hover:bg-secondary-green transition-colors shrink-0 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
     </>
   );

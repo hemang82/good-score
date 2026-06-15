@@ -175,3 +175,18 @@ h1, h2, h3, h4, h5, h6 {
 .custom-chat-scroll::-webkit-scrollbar-track { background: transparent; }
 .custom-chat-scroll::-webkit-scrollbar-thumb { background: #E5E5E5; border-radius: 10px; }
 .custom-chat-scroll::-webkit-scrollbar-thumb:hover { background: #C7C7C7; }
+
+/* Custom Chatbot Typing Animation */
+@keyframes typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  30% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+.animate-typing-bounce {
+  animation: typing-bounce 1.4s infinite ease-in-out both;
+}

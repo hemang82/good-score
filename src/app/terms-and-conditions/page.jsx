@@ -37,7 +37,7 @@ export default function Page() {
         <div id="acceptance" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">1. Acceptance of Terms</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            By accessing or using the GoodScore mobile application, website, or associated services, you agree to comply with and be fully bound by these Terms & Conditions. If you do not agree to these terms in their entirety, please do not use our platform.
+            By accessing or using the UPSCORE mobile application, website, or associated services, you agree to comply with and be fully bound by these Terms & Conditions. If you do not agree to these terms in their entirety, please do not use our platform.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function Page() {
         <div id="eligibility" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">2. User Eligibility</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            You must be at least 18 years of age and a resident of India with a valid Permanent Account Number (PAN) to use the services offered by GoodScore. By using this service, you legally represent and warrant that you meet these eligibility criteria.
+            You must be at least 18 years of age and a resident of India with a valid Permanent Account Number (PAN) to use the services offered by UPSCORE. By using this service, you legally represent and warrant that you meet these eligibility criteria.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function Page() {
         <div id="bureau-authorization" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">3. Bureau Authorization</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed mb-3">
-            By requesting a credit score check, you explicitly appoint GoodScore as your authorized representative to interact with partner credit bureaus (including CIBIL, Experian, and Equifax) to:
+            By requesting a credit score check, you explicitly appoint UPSCORE as your authorized representative to interact with partner credit bureaus (including CIBIL, Experian, and Equifax) to:
           </p>
           <ul className="space-y-2 text-xs md:text-sm text-text-secondary list-inside">
             <li className="flex items-start gap-2.5">
@@ -71,7 +71,7 @@ export default function Page() {
         <div id="user-obligations" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">4. User Obligations</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            You agree to provide true, accurate, current, and complete information about yourself as prompted by our registration forms. GoodScore reserves the right to suspend or terminate your account if any information provided is found to be false, fraudulent, or impersonating another individual.
+            You agree to provide true, accurate, current, and complete information about yourself as prompted by our registration forms. UPSCORE reserves the right to suspend or terminate your account if any information provided is found to be false, fraudulent, or impersonating another individual.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function Page() {
         <div id="refund-policy" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">5. Refund & Cancellation</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            While basic credit checks are free, GoodScore offers premium subscription plans. Subscriptions can be canceled at any time. Refunds for premium plans are only processed if requested within 7 days of the initial transaction, provided no premium dispute templates or personalized advisor sessions were utilized.
+            While basic credit checks are free, UPSCORE offers premium subscription plans. Subscriptions can be canceled at any time. Refunds for premium plans are only processed if requested within 7 days of the initial transaction, provided no premium dispute templates or personalized advisor sessions were utilized.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function Page() {
         <div id="intellectual-property" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">6. Intellectual Property</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            All content, brand names, custom UI layouts, graphics, and underlying software code are the exclusive intellectual property of GoodScore. You are strictly prohibited from copying, reverse engineering, modifying, or using these assets for commercial purposes without explicit written permission.
+            All content, brand names, custom UI layouts, graphics, and underlying software code are the exclusive intellectual property of UPSCORE. You are strictly prohibited from copying, reverse engineering, modifying, or using these assets for commercial purposes without explicit written permission.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function Page() {
         <div id="limitations" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">7. Limitations of Liability</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            GoodScore compiles credit scores directly from rating bureau databases. We act as a technology bridge and do not guarantee the absolute accuracy of bureau records. We are not liable for any credit decisions, loan rejections, or errors reported by third-party financial institutions.
+            UPSCORE compiles credit scores directly from rating bureau databases. We act as a technology bridge and do not guarantee the absolute accuracy of bureau records. We are not liable for any credit decisions, loan rejections, or errors reported by third-party financial institutions.
           </p>
         </div>
 

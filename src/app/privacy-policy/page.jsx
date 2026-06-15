@@ -36,10 +36,10 @@ export default function Page() {
         <div id="introduction" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">1. Introduction</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            Welcome to GoodScore. We are strongly committed to protecting the privacy, safety, and security of our users' personal and financial information. This Privacy Policy details precisely how we collect, store, secure, process, and manage your credit score profiles and identity registers when you use our website or mobile application.
+            Welcome to UPSCORE. We are strongly committed to protecting the privacy, safety, and security of our users' personal and financial information. This Privacy Policy details precisely how we collect, store, secure, process, and manage your credit score profiles and identity registers when you use our website or mobile application.
           </p>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            By accessing GoodScore, you explicitly agree to the collection and use of information in accordance with this Privacy Policy.
+            By accessing UPSCORE, you explicitly agree to the collection and use of information in accordance with this Privacy Policy.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export default function Page() {
         <div id="data-usage" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">3. How We Use Data</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            The data collected is utilized strictly for the operational functionality of GoodScore. We use your data to:
+            The data collected is utilized strictly for the operational functionality of UPSCORE. We use your data to:
           </p>
           <ul className="space-y-2 text-xs md:text-sm text-text-secondary list-disc pl-5">
             <li>Fetch, decrypt, and display your CIBIL, Experian, and Equifax credit scores.</li>
@@ -94,7 +94,7 @@ export default function Page() {
         <div id="cookies" className="space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-dark-green">5. Cookies & Tracking</h2>
           <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-            GoodScore uses cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept essential session cookies, you may not be able to use certain secure portions of our Service.
+            UPSCORE uses cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept essential session cookies, you may not be able to use certain secure portions of our Service.
           </p>
         </div>
 

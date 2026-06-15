@@ -1,39 +1,48 @@
-import { NextResponse } from 'next/server';
-import OpenAI from 'openai';
+import { openai } from '@ai-sdk/openai';
+import { streamText } from 'ai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
 
 export async function POST(req) {
+  const { messages } = await req.json();
+
+  const systemPrompt = `You are the "UPSCORE Assistant", a premium customer support AI for UPSCORE.
+  UPSCORE is an advanced platform helping users analyze, correct, and sustainably build their credit profiles to reach a 750+ score.
+
+CRITICAL INSTRUCTIONS FOR YOU:
+1. Always format your responses using Markdown. Use **bolding** for important terms and bullet points for lists.
+2. Provide extremely short, concise, and direct answers. Maximum 4 short sentences/lines.
+3. Tone: Friendly, professional, and knowledgeable.
+4. LANGUAGE RULE: The user may ask questions in English, Hinglish, or Gujlish. You must understand their intent, but you MUST ALWAYS reply in 100% ENGLISH ONLY. Never reply in Hindi, Gujarati, or any other language.
+5. STRICT BOUNDARY: You are an expert ONLY on UPSCORE, Credit Scores, Bill Payments, Loans, and Personal Finance. You can answer General Knowledge (GK) questions IF they are related to credit scores, bill payments, or our features. If the user asks about coding, math, history, science, or ANYTHING outside of finance/credit, you MUST firmly refuse. Say: "I am the UPSCORE Assistant. I can only help you with questions related to your credit score, bill payments, and the UPSCORE platform."
+
+KNOWLEDGE BASE (Answer directly using this if asked about any of these features):
+- **Everything You Need To Build A Better Credit Score**: We offer 8 core features: 1. Free Credit Score Check 2. Personalized Plans 3. Report Downloads 4. Credit Utilization (Warnings/Alerts) 5. Dispute Management 6. EMI Calculator 7. Bill Payments 8. Credit Expert Support. These tools are intelligently modeled to analyze, correct, and build your credit profile sustainably.
+- **How It Works**: It's a 5-step process: 1. Check Your Score. 2. Get Personalized Plan. 3. Complete Recommended Tasks. 4. Track Progress. 5. Increase Credit Score.
+- **Premium Credit Report Analysis**: We offer a visual, buttery-smooth breakdown of your debt lines, card histories, and loans. Key features include: Card Utilization Track, Closed Account Records, Loan Account Audits, and Bureau Protected Audits. You can also download the full report.
+- **Pay Bills & Protect Your Score**: You can pay a wide variety of bills directly through UPSCORE, including Mobile Prepaid, Broadband, Cable TV, Credit Card, DTH, Echallan, Education Fee, Electricity, EV Recharge, FASTag, Gas Line, Insurance, Loan Repay, LPG Gas, and Water Bill. Timely payments guarantee a positive boost!
+- **Interactive Task Planner**: A gamified 4-step checklist to boost your score: 1. Check Credit Report Errors. 2. Refresh Credit Score. 3. Set Bill Payment Reminder. 4. Reduce Credit Utilization. Completing these tasks fills up your progress ring in real-time!
+- **Why Choose GoodScore?**: We offer real-time syncing, automated dispute generation, and personalized task tracking—making us the most advanced and user-friendly platform in India.
+- **Need Expert Guidance?**: If your credit history is complicated, you can connect directly with our certified credit experts for 1-on-1 personalized assistance to fix your score.
+- **Frequently Asked Questions**: Our built-in FAQ section covers everything from pricing (free basic checks) to security (bank-grade AES encryption) to make sure you have zero doubts.
+- **Ready to Improve Your Score?**: You can get started right away by downloading our app from the Apple App Store or Google Play Store and clicking 'Check Your Score Free'.`;
+
   try {
-    const { messages } = await req.json();
-
-    const systemPrompt = `You are the "GoodScore Assistant", a helpful and professional customer support bot for GoodScore. 
-GoodScore is a premium credit management platform designed to help users analyze, correct, and build their credit profile to reach a 750+ score.
-Pricing: Checking the basic credit score is 100% FREE! We also offer premium personalized plans for advanced guidance.
-Security: Bank-grade 256-bit AES encryption. Data is never sold.
-Tone: Friendly, concise, professional.
-Always answer concisely in 1-3 short sentences. Be helpful.`;
-
-    const chatMessages = [
-      { role: 'system', content: systemPrompt },
-      ...messages
-    ];
-
-    const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: chatMessages,
+    const result = await streamText({
+      model: openai('gpt-3.5-turbo'),
+      system: systemPrompt,
+      messages,
       temperature: 0.7,
-      max_tokens: 150,
     });
 
-    return NextResponse.json({ reply: response.choices[0].message.content });
+    return result.toTextStreamResponse();
   } catch (error) {
-    console.error('OpenAI Error:', error);
-    return NextResponse.json(
-      { error: 'An error occurred while communicating with the AI. Please try again later.' },
-      { status: 500 }
-    );
+    console.error("OpenAI API Error:", error);
+    return new Response(JSON.stringify({ error: error.message || "An error occurred with OpenAI." }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
+
 }

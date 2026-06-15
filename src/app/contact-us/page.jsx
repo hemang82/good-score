@@ -117,7 +117,7 @@ export default function Page() {
           </div>
           <h3 className="text-lg font-bold text-dark-green">Our Office</h3>
           <p className="text-sm text-text-secondary">
-            GoodScore Technologies Pvt. Ltd.<br />
+            UPSCORE Technologies Pvt. Ltd.<br />
             401, Sapphire Tower, SG Highway<br />
             Ahmedabad, Gujarat 380015, India
           </p>
@@ -132,7 +132,7 @@ export default function Page() {
           </div>
           <h3 className="text-lg font-bold text-dark-green">Contact Info</h3>
           <div className="text-sm text-text-secondary space-y-1">
-            <p><strong>Email:</strong> support@goodscore.in</p>
+            <p><strong>Email:</strong> support@upscore.in</p>
             <p><strong>Phone:</strong> +91 1800-123-4567</p>
             <p><strong>Hours:</strong> 9:00 AM to 6:00 PM (IST)</p>
           </div>

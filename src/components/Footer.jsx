@@ -9,17 +9,7 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center focus:outline-none shrink-0">
-            <svg className="h-10 w-auto" viewBox="0 0 400 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="45" y="46" fontFamily="'Playfair Display', 'Georgia', serif" fontSize="34" fontWeight="900" fill="#0C2340" letterSpacing="1">GOOD</text>
-              <g transform="translate(20, 0)">
-                <path d="M 152 46 A 28 28 0 0 1 180 18 L 180 26 A 20 20 0 0 0 160 46 Z" fill="#1b5e3a" />
-                <path d="M 180 18 A 28 28 0 0 1 208 46 L 200 46 A 20 20 0 0 0 180 26 Z" fill="#2f9e44" />
-                <circle cx="180" cy="43" r="4.5" fill="#1b5e3a" />
-                <path d="M 178 44 L 199 21 L 182.5 40 Z" fill="#0C2340" />
-              </g>
-              <text x="245" y="46" fontFamily="'Playfair Display', 'Georgia', serif" fontSize="34" fontWeight="900" fill="#0C2340" letterSpacing="1">SCORE</text>
-              <text x="200" y="66" fontFamily="'Inter', sans-serif" fontSize="9.5" fontWeight="600" fill="#5A6A80" textAnchor="middle" letterSpacing="0.5">Personal Finance Indicator</text>
-            </svg>
+            <img src="/upscore-logo.png" alt="UPSCORE" className="h-8 w-auto" />
           </Link>
 
           {/* Center Nav Links */}
@@ -56,7 +46,7 @@ export default function Footer() {
 
         {/* Bottom Section: Copyright & Legal Links */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
-          <span>© 2026 GoodScore. All rights reserved.</span>
+          <span>© 2026 UPSCORE. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
             <Link href="/faq" className="hover:text-dark-green transition-colors">FAQ</Link>
             <Link href="/contact-us" className="hover:text-dark-green transition-colors">Contact Us</Link>
