@@ -1,3 +1,4 @@
+// Trigger Vercel deploy: SEO & Chatbot Updates
 import { Lato } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/ConditionalLayout";
