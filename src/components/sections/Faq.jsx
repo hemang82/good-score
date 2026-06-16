@@ -28,7 +28,7 @@ export default function Faq() {
   ];
 
   return (
-    <section className="bg-bg-light py-20 md:py-24 border-y border-border-light relative overflow-hidden">
+    <section className="bg-bg-light py-8 md:py-12 border-y border-border-light relative overflow-hidden">
       
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white to-transparent pointer-events-none" />

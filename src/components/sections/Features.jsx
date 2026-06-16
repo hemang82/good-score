@@ -75,7 +75,7 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 relative">
+    <section id="features" className="max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10" />
       
       <div className="text-center max-w-3xl mx-auto mb-16 reveal">

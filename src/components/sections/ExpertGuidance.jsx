@@ -1,6 +1,6 @@
 export default function ExpertGuidance() {
   return (
-    <section className="max-w-7xl mx-auto px-6 md:px-12 pb-16 md:pb-24 reveal">
+    <section className="max-w-7xl mx-auto px-6 md:px-12 pb-8 md:pb-12 reveal">
       <div className="bg-dark-green rounded-[32px] p-8 md:p-12 lg:p-16 text-white flex flex-col lg:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-2xl">
         
         {/* Abstract Background Shapes */}

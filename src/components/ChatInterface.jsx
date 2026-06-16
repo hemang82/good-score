@@ -63,21 +63,6 @@ const ContactFormWidget = () => {
           onChange={e => setFormData({...formData, title: e.target.value})}
           className="w-full border border-border-light rounded-lg px-3 py-2 text-[13px] sm:text-sm outline-none focus:border-dark-green"
         />
-        <textarea 
-          placeholder="Describe your issue..." 
-          required minLength="10" rows="3"
-          value={formData.description}
-          onChange={e => setFormData({...formData, description: e.target.value})}
-          className="w-full border border-border-light rounded-lg px-3 py-2 text-[13px] sm:text-sm outline-none focus:border-dark-green resize-none"
-        ></textarea>
-        <input 
-          type="email" 
-          placeholder="Email Address" 
-          required
-          value={formData.email}
-          onChange={e => setFormData({...formData, email: e.target.value})}
-          className="w-full border border-border-light rounded-lg px-3 py-2 text-[13px] sm:text-sm outline-none focus:border-dark-green"
-        />
         <input 
           type="text" 
           placeholder="10-digit Mobile Number" 
@@ -86,13 +71,28 @@ const ContactFormWidget = () => {
           onChange={e => setFormData({...formData, mobile: e.target.value})}
           className="w-full border border-border-light rounded-lg px-3 py-2 text-[13px] sm:text-sm outline-none focus:border-dark-green"
         />
+        <input 
+          type="email" 
+          placeholder="Email Address" 
+          required
+          value={formData.email}
+          onChange={e => setFormData({...formData, email: e.target.value})}
+          className="w-full border border-border-light rounded-lg px-3 py-2 text-[13px] sm:text-sm outline-none focus:border-dark-green"
+        />
+        <textarea 
+          placeholder="Describe your issue..." 
+          required minLength="10" rows="3"
+          value={formData.description}
+          onChange={e => setFormData({...formData, description: e.target.value})}
+          className="w-full border border-border-light rounded-lg px-3 py-2 text-[13px] sm:text-sm outline-none focus:border-dark-green resize-none"
+        ></textarea>
         
         {status === 'error' && <p className="text-xs text-red-600 font-semibold">{message}</p>}
         
         <button 
           type="submit" 
           disabled={status === 'loading'}
-          className="w-full bg-dark-green text-white font-bold text-sm px-4 py-2.5 rounded-lg hover:bg-secondary-green transition-colors disabled:opacity-70 flex justify-center items-center gap-2 mt-1"
+          className="w-full bg-dark-green text-white font-bold text-sm px-4 py-2.5 rounded-lg hover:bg-secondary-green transition-colors disabled:opacity-70 flex justify-center items-center gap-2 mt-1 cursor-pointer"
         >
           {status === 'loading' ? (
             <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
@@ -104,12 +104,45 @@ const ContactFormWidget = () => {
 };
 
 
+const FAQS = [
+  {
+    id: 'faq-1',
+    q: "What is UPSCORE?",
+    a: "UPSCORE is a premium credit management and score improvement platform. We securely analyze your credit histories, flag bureau reporting errors, and compile personalized step plans to build your financial standing rapidly."
+  },
+  {
+    id: 'faq-2',
+    q: "How often can I check my score?",
+    a: "You can check your score as many times as you like. We pull your logs as a \"soft inquiry,\" meaning it has absolutely zero negative impact on your actual score calculation."
+  },
+  {
+    id: 'faq-3',
+    q: "How does score improvement work?",
+    a: "Our AI analyzes critical score criteria—such as payment records, age of accounts, and utilization percentages. We then list specific actionable tasks like adjusting bill schedules or filing error corrections to boost your rating step by step."
+  },
+  {
+    id: 'faq-4',
+    q: "Can I raise disputes directly?",
+    a: "Yes! UPSCORE provides smart template drafts that sync directly with Credit Bureaus, making filing error reports simple, fast, and completely error-free."
+  },
+  {
+    id: 'faq-5',
+    q: "Is my data secure on UPSCORE?",
+    a: "Absolutely. We utilize bank-grade 256-bit AES encryption alongside strict OAuth authorization models, ensuring your financial information remains fully private, encrypted, and protected at all times."
+  }
+];
+
 export default function ChatInterface({ onClose }) {
   const messagesEndRef = useRef(null);
 
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useState([
-    { id: 'initial-msg', role: 'assistant', content: "Hi! I'm the UPSCORE Assistant. How can I help you today?" }
+    { 
+      id: 'initial-msg', 
+      role: 'assistant', 
+      content: "Hi! I'm the UPSCORE Assistant. How can I help you today?",
+      type: 'initial_options'
+    }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -122,20 +155,68 @@ export default function ChatInterface({ onClose }) {
     scrollToBottom();
   }, [messages, error]);
 
+  const handleInitialOptionSelect = (option) => {
+    if (isLoading) return;
+    
+    if (option === 'faq') {
+      const userMsg = { id: Date.now().toString(), role: 'user', content: "Frequently Asked Questions" };
+      const botMsg = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Here are some of the most frequently asked questions. Please select one to view the answer:",
+        type: 'faq_list'
+      };
+      setMessages((prev) => [...prev, userMsg, botMsg]);
+    } else if (option === 'support') {
+      const userMsg = { id: Date.now().toString(), role: 'user', content: "24/7 Support" };
+      const botMsg = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Please fill out this form to submit your support request:",
+        type: 'contact_form'
+      };
+      setMessages((prev) => [...prev, userMsg, botMsg]);
+    } else if (option === 'back') {
+      const userMsg = { id: Date.now().toString(), role: 'user', content: "Go to Main Menu" };
+      const botMsg = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "How else can I help you today? Please choose an option below:",
+        type: 'initial_options'
+      };
+      setMessages((prev) => [...prev, userMsg, botMsg]);
+    }
+  };
+
+  const handleFaqSelect = (faq) => {
+    if (isLoading) return;
+    const userMsg = { id: Date.now().toString(), role: 'user', content: faq.q };
+    const botMsg = {
+      id: (Date.now() + 1).toString(),
+      role: 'assistant',
+      content: faq.a,
+      type: 'faq_answer'
+    };
+    setMessages((prev) => [...prev, userMsg, botMsg]);
+  };
+
   const sendToAI = async (text) => {
     if (!text.trim() || isLoading) return;
 
-    // --- Special Intercept for 24/7 Support ---
-    if (text === "24/7 Support" || text.toLowerCase().includes("contact us")) {
-      const userMessage = { id: Date.now().toString(), role: 'user', content: text };
-      const botMessage = { 
-        id: (Date.now() + 1).toString(), 
-        role: 'assistant', 
-        content: "I'd be happy to connect you with our support team. Please fill out this quick form and they will get back to you:",
-        type: 'contact_form' 
-      };
-      setMessages([...messages, userMessage, botMessage]);
-      setInputValue('');
+    // Direct routing for menu items if typed or matched
+    const lowerText = text.toLowerCase().trim();
+    if (lowerText === "faq" || lowerText === "faqs" || lowerText.includes("frequently asked")) {
+      handleInitialOptionSelect('faq');
+      return;
+    }
+    if (
+      lowerText.includes("24/7") || 
+      lowerText.includes("contact") || 
+      lowerText === "support" || 
+      lowerText.includes("support team") || 
+      lowerText.includes("ticket")
+    ) {
+      handleInitialOptionSelect('support');
       return;
     }
 
@@ -150,10 +231,16 @@ export default function ChatInterface({ onClose }) {
     setMessages((prev) => [...prev, { id: botMessageId, role: 'assistant', content: '' }]);
 
     try {
+      // Filter out custom type messages (menu buttons, contact forms, etc.) so we only send real conversation text to AI
+      const aiPayload = newMessages.filter(m => !m.type || m.type === 'faq_answer').map(m => ({
+        role: m.role,
+        content: m.content
+      }));
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages.filter(m => !m.type) }) // Don't send custom type messages to AI
+        body: JSON.stringify({ messages: aiPayload })
       });
 
       if (!response.ok) throw new Error('API Error');
@@ -181,7 +268,15 @@ export default function ChatInterface({ onClose }) {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    sendToAI(suggestion);
+    if (suggestion.includes("Main Menu")) {
+      handleInitialOptionSelect('back');
+    } else if (suggestion.includes("FAQs")) {
+      handleInitialOptionSelect('faq');
+    } else if (suggestion.includes("24/7 Support")) {
+      handleInitialOptionSelect('support');
+    } else {
+      sendToAI(suggestion);
+    }
   };
 
   const handleManualSubmit = (e) => {
@@ -192,21 +287,21 @@ export default function ChatInterface({ onClose }) {
   return (
     <div className="flex flex-col h-full w-full bg-white">
       {/* Chat Header */}
-      <div className="bg-dark-green text-white p-4 flex items-center justify-between shrink-0 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center text-dark-green text-xs font-bold">
+      <div className="bg-dark-green text-white py-2.5 px-3.5 flex items-center justify-between shrink-0 shadow-sm">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-dark-green text-[10px] font-black">
             US
           </div>
           <div>
-            <h4 className="font-bold text-[15px]">UPSCORE Assistant</h4>
-            <p className="text-[11px] text-primary flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
-              AI Powered • Online
+            <h4 className="font-bold text-[13px] leading-tight">UPSCORE Assistant</h4>
+            <p className="text-[9px] text-primary flex items-center gap-1 mt-0.5">
+              <span className="w-1 h-1 bg-primary rounded-full animate-pulse"></span>
+              Online
             </p>
           </div>
         </div>
         {onClose && (
-          <button onClick={onClose} className="text-white/70 hover:text-white transition-colors p-1">
+          <button onClick={onClose} className="text-white/70 hover:text-white transition-colors p-1 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -216,58 +311,118 @@ export default function ChatInterface({ onClose }) {
 
       {/* Chat Messages Area */}
       <div className="flex-1 p-4 overflow-y-auto bg-bg-light flex flex-col gap-4 custom-chat-scroll">
-        {messages.map((msg) => (
-          <div key={msg.id} className={`flex items-start gap-2 max-w-[85%] sm:max-w-[85%] ${msg.role === 'user' ? 'self-end flex-row-reverse' : ''}`}>
-            {msg.role !== 'user' && (
-              <div className="w-6 h-6 sm:w-7 sm:h-7 bg-dark-green text-primary rounded-full flex items-center justify-center shrink-0 mt-1">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                  <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-                </svg>
-              </div>
-            )}
-            <div 
-              className={
-                msg.role === 'user' 
-                  ? 'bg-dark-green text-white text-sm sm:text-[15px] p-3 sm:p-3.5 rounded-2xl rounded-tr-sm shadow-sm whitespace-pre-wrap' 
-                  : 'bg-white border border-border-light text-text-primary text-sm sm:text-[15px] p-3 sm:p-3.5 rounded-2xl rounded-tl-sm shadow-sm markdown-body leading-relaxed w-full'
-              }
-            >
-              {msg.role === 'user' ? (
-                msg.content
-              ) : (
-                <>
-                  <ReactMarkdown
-                    components={{
-                      p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                      ul: ({node, ...props}) => <ul className="list-disc pl-4 sm:pl-5 mb-2 last:mb-0" {...props} />,
-                      ol: ({node, ...props}) => <ol className="list-decimal pl-4 sm:pl-5 mb-2 last:mb-0" {...props} />,
-                      li: ({node, ...props}) => <li className="mb-1" {...props} />,
-                      strong: ({node, ...props}) => <strong className="font-bold text-dark-green" {...props} />,
-                      a: ({node, ...props}) => <a className="text-secondary-green underline hover:text-dark-green" {...props} />
-                    }}
-                  >
-                    {msg.content}
-                  </ReactMarkdown>
-                  
-                  {/* Conditionally render Contact Form Widget */}
-                  {msg.type === 'contact_form' && <ContactFormWidget />}
-                </>
+        {messages.map((msg) => {
+          // Skip rendering empty assistant bubbles used as stream placeholders
+          if (msg.role === 'assistant' && !msg.content && !msg.type) {
+            return null;
+          }
+          return (
+            <div key={msg.id} className={`flex items-start gap-2 max-w-[85%] sm:max-w-[85%] ${msg.role === 'user' ? 'self-end flex-row-reverse' : ''}`}>
+              {msg.role !== 'user' && (
+                <div className="w-6 h-6 sm:w-7 sm:h-7 bg-dark-green text-primary rounded-full flex items-center justify-center shrink-0 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                  </svg>
+                </div>
               )}
+              <div 
+                className={
+                  msg.role === 'user' 
+                    ? 'bg-dark-green text-white text-sm sm:text-[15px] p-3 sm:p-3.5 rounded-2xl rounded-tr-sm shadow-sm whitespace-pre-wrap text-left' 
+                    : 'bg-white border border-border-light text-text-primary text-sm sm:text-[15px] p-3 sm:p-3.5 rounded-2xl rounded-tl-sm shadow-sm markdown-body leading-relaxed w-full text-left'
+                }
+              >
+                {msg.role === 'user' ? (
+                  msg.content
+                ) : (
+                  <>
+                    <ReactMarkdown
+                      components={{
+                        p: ({node, ...props}) => <p className="mb-2 last:mb-0 text-left" {...props} />,
+                        ul: ({node, ...props}) => <ul className="list-disc pl-4 sm:pl-5 mb-2 last:mb-0 text-left" {...props} />,
+                        ol: ({node, ...props}) => <ol className="list-decimal pl-4 sm:pl-5 mb-2 last:mb-0 text-left" {...props} />,
+                        li: ({node, ...props}) => <li className="mb-1 text-left" {...props} />,
+                        strong: ({node, ...props}) => <strong className="font-bold text-dark-green" {...props} />,
+                        a: ({node, ...props}) => <a className="text-secondary-green underline hover:text-dark-green text-left" {...props} />
+                      }}
+                    >
+                      {msg.content}
+                    </ReactMarkdown>
+                    
+                    {/* Custom Message Type: initial_options */}
+                    {msg.type === 'initial_options' && (
+                      <div className="mt-3 flex flex-col gap-2">
+                        <button 
+                          onClick={() => handleInitialOptionSelect('faq')}
+                          className="w-full text-left bg-bg-light border border-border-light hover:bg-primary/10 hover:border-primary text-dark-green font-bold text-sm px-4 py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
+                        >
+                          <span>🔍 Frequently Asked Questions</span>
+                        </button>
+                        <button 
+                          onClick={() => handleInitialOptionSelect('support')}
+                          className="w-full text-left bg-bg-light border border-border-light hover:bg-primary/10 hover:border-primary text-dark-green font-bold text-sm px-4 py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
+                        >
+                          <span>🛠️ 24/7 Support</span>
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Custom Message Type: faq_list */}
+                    {msg.type === 'faq_list' && (
+                      <div className="mt-3 flex flex-col gap-2">
+                        {FAQS.map((faq) => (
+                          <button 
+                            key={faq.id}
+                            onClick={() => handleFaqSelect(faq)}
+                            className="w-full text-left bg-bg-light border border-border-light hover:bg-primary/10 hover:border-primary text-dark-green text-[13px] font-semibold px-3.5 py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
+                          >
+                            <span>{faq.q}</span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Custom Message Type: faq_answer */}
+                    {msg.type === 'faq_answer' && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <button 
+                          onClick={() => handleInitialOptionSelect('faq')}
+                          className="bg-bg-light border border-border-light hover:bg-primary/10 hover:border-primary text-dark-green text-xs font-bold px-3 py-1.5 rounded-lg transition-all shadow-sm cursor-pointer"
+                        >
+                          🔍 Back to FAQs
+                        </button>
+                        <button 
+                          onClick={() => handleInitialOptionSelect('support')}
+                          className="bg-bg-light border border-border-light hover:bg-primary/10 hover:border-primary text-dark-green text-xs font-bold px-3 py-1.5 rounded-lg transition-all shadow-sm cursor-pointer"
+                        >
+                          🛠️ Support Form
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Conditionally render Contact Form Widget */}
+                    {msg.type === 'contact_form' && <ContactFormWidget />}
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-        {isLoading && messages[messages.length - 1]?.role === 'user' && (
+          );
+        })}
+        {(isLoading && (
+          messages[messages.length - 1]?.role === 'user' ||
+          (messages[messages.length - 1]?.role === 'assistant' && !messages[messages.length - 1]?.content && !messages[messages.length - 1]?.type)
+        )) && (
           <div className="flex items-start gap-2 max-w-[85%]">
             <div className="w-6 h-6 sm:w-7 sm:h-7 bg-dark-green text-primary rounded-full flex items-center justify-center shrink-0 mt-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
               </svg>
             </div>
-            <div className="bg-white border border-border-light px-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5 h-[42px] sm:h-[46px] w-fit">
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-dark-green rounded-full animate-typing-bounce" style={{animationDelay: '-0.32s'}}></span>
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-dark-green rounded-full animate-typing-bounce" style={{animationDelay: '-0.16s'}}></span>
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-dark-green rounded-full animate-typing-bounce" style={{animationDelay: '0s'}}></span>
+            <div className="bg-white border border-border-light px-3 py-1.5 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5 h-[34px] w-fit">
+              <span className="w-1.5 h-1.5 bg-dark-green rounded-full animate-typing-bounce" style={{animationDelay: '-0.32s'}}></span>
+              <span className="w-1.5 h-1.5 bg-dark-green rounded-full animate-typing-bounce" style={{animationDelay: '-0.16s'}}></span>
+              <span className="w-1.5 h-1.5 bg-dark-green rounded-full animate-typing-bounce" style={{animationDelay: '0s'}}></span>
             </div>
           </div>
         )}
@@ -285,19 +440,16 @@ export default function ChatInterface({ onClose }) {
       </div>
 
       {/* Suggestions Area */}
-      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-bg-light border-t border-border-light flex gap-2 overflow-x-auto whitespace-nowrap hide-scroll shrink-0">
+      <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-bg-light border-t border-border-light flex gap-2 overflow-x-auto whitespace-nowrap hide-scroll shrink-0">
         {[
-          "24/7 Support",
-          "How to improve my credit score?", 
-          "How does UPSCORE work?", 
-          "Can I pay electricity bills?", 
-          "What is the Task Planner?"
+          "🔍 FAQs",
+          "🛠️ 24/7 Support"
         ].map((suggestion) => (
           <button
             key={suggestion}
             onClick={() => handleSuggestionClick(suggestion)}
             disabled={isLoading}
-            className="text-xs sm:text-[13px] font-bold bg-white border border-border-light text-dark-green px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full hover:bg-primary/10 hover:border-primary transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+            className="text-xs font-bold bg-white border border-border-light text-dark-green px-3 py-1.5 rounded-full hover:bg-primary/10 hover:border-primary transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm cursor-pointer"
           >
             {suggestion}
           </button>
@@ -305,21 +457,21 @@ export default function ChatInterface({ onClose }) {
       </div>
 
       {/* Input Area */}
-      <form onSubmit={handleManualSubmit} className="p-2.5 sm:p-3 pb-safe bg-white border-t border-border-light flex items-center gap-2 shrink-0">
+      <form onSubmit={handleManualSubmit} className="p-2 pb-safe bg-white border-t border-border-light flex items-center gap-2 shrink-0">
         <input 
           type="text" 
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           disabled={isLoading}
           placeholder={isLoading ? "AI is typing..." : "Type a message..."}
-          className="flex-1 bg-bg-light border border-border-light text-sm sm:text-[15px] px-4 sm:px-5 py-3 sm:py-3.5 rounded-full outline-none focus:border-secondary-green transition-colors disabled:opacity-50"
+          className="flex-1 bg-bg-light border border-border-light text-xs sm:text-sm px-4 py-2 sm:py-2.5 rounded-full outline-none focus:border-secondary-green transition-colors disabled:opacity-50"
         />
         <button 
           type="submit"
           disabled={isLoading || !inputValue.trim()}
-          className="w-11 h-11 sm:w-12 sm:h-12 bg-dark-green text-white rounded-full flex items-center justify-center hover:bg-secondary-green transition-colors shrink-0 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-9 h-9 sm:w-10 sm:h-10 bg-dark-green text-white rounded-full flex items-center justify-center hover:bg-secondary-green transition-colors shrink-0 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 ml-1" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 ml-0.5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
           </svg>
         </button>

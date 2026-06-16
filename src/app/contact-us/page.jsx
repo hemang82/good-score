@@ -96,6 +96,18 @@ export default function Page() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact UPSCORE Support",
+            "description": "Get 24/7 assistance and advisor ticket support from the UPSCORE credit expert team.",
+            "url": "https://upscore.in/contact-us"
+          })
+        }}
+      />
       <main className="max-w-7xl mx-auto px-6 md:px-12 pt-6 pb-12 md:py-16">
     <div className="flex flex-col items-center mb-12 text-center">
       <h1 className="text-3xl md:text-5xl font-black text-dark-green tracking-tight mb-4">Get in Touch</h1>

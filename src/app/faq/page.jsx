@@ -50,6 +50,65 @@ export default function Page() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is UPSCORE?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "UPSCORE is a comprehensive credit management platform designed to help you analyze, correct, and sustainably build your credit profile. We securely fetch your official credit reports and provide personalized, step-by-step guidance to help you reach a 750+ score."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How often can I check my score?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! Checking your basic credit score (from bureaus like Experian or CIBIL) via UPSCORE is 100% free and will never negatively impact your score (it counts as a \"soft inquiry\"). We do offer premium personalized plans for advanced credit building if you need extra help."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does score improvement work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. When you check your own score through UPSCORE, it is classified as a \"soft inquiry\" by the bureaus. Soft inquiries have absolutely zero impact on your credit score, no matter how many times you check it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I raise disputes directly?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "If you spot an unauthorized inquiry, duplicate loan, or incorrect personal detail, you can use our built-in dispute templates. Simply go to the \"Credit Report\" section, select the erroneous entry, and UPSCORE will generate an official dispute request to send to the respective credit bureau."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my data secure on UPSCORE?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. We utilize bank-grade 256-bit AES encryption alongside strict OAuth authorization models, ensuring your financial information remains fully private, encrypted, and protected at all times."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take for my score to update?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Credit bureaus generally update their records once every 30 to 45 days, depending on when your banks and lenders report your payment data. If you recently paid off a loan or cleared a credit card bill, please allow up to 45 days for the changes to reflect on your UPSCORE dashboard."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <main className="max-w-7xl mx-auto px-6 md:px-12 pt-6 pb-12 md:py-16">
     <div className="flex flex-col items-center mb-12 text-center">
       <h1 className="text-3xl md:text-5xl font-black text-dark-green tracking-tight mb-4">Frequently Asked Questions</h1>

@@ -7,7 +7,7 @@ export default function Trust() {
   ];
 
   return (
-    <section className="bg-bg-light py-12 md:py-20 border-y border-border-light relative overflow-hidden">
+    <section className="bg-bg-light py-8 md:py-12 border-y border-border-light relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] mix-blend-overlay" />
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10">

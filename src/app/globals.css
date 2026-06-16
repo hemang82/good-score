@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:wght@700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -16,20 +15,22 @@
 
   --radius-premium-sm: 16px;
   --radius-premium: 24px;
+
+  --font-sans: var(--font-lato), sans-serif;
 }
 
 /* Base Styles */
-html {
+html, body {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
-  font-family: 'Lato', sans-serif;
+  scroll-padding-top: 70px;
   background-color: #F7F8F7;
   color: #222222;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
+html, body, p, span, a, li, button, input, textarea, select, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-lato), sans-serif !important;
 }
 
 /* Custom Scrollbar */

@@ -18,7 +18,7 @@ export default function BillPayments() {
   ];
 
   return (
-    <section id="bill-payments" className="bg-white max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 relative overflow-hidden">
+    <section id="bill-payments" className="bg-white max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12 relative overflow-hidden">
       
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-green/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 

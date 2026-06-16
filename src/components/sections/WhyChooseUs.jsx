@@ -28,7 +28,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="bg-white max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 relative">
+    <section className="bg-white max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12 relative">
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none -z-10" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary-green/5 rounded-full blur-[100px] pointer-events-none -z-10" />
 

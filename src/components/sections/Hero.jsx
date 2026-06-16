@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24 flex flex-col lg:flex-row items-center gap-12 overflow-visible">
+    <section className="relative max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12 lg:py-12 flex flex-col lg:flex-row items-center gap-12 overflow-visible">
       
       {/* Hero Left Side */}
       <div className="flex-1 text-center lg:text-left reveal active">

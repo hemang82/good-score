@@ -23,7 +23,7 @@ export default function TaskPlanner() {
   const completedCount = tasks.filter(t => t.done).length;
 
   return (
-    <section id="improvement-plan" className="bg-bg-light py-16 md:py-24 relative overflow-hidden">
+    <section id="improvement-plan" className="bg-bg-light py-8 md:py-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
         
         {/* Interactive Checklist Left */}

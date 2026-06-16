@@ -31,18 +31,19 @@ export default function Header() {
 
           {/* Desktop Nav Menu */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-text-primary">
-            <Link href="/" className="nav-link transition-colors hover:text-dark-green py-2">Home</Link>
-            <Link href="/#features" className="nav-link transition-colors hover:text-dark-green py-2">Features</Link>
-            <Link href="/#credit-report" className="nav-link transition-colors hover:text-dark-green py-2">Credit Report</Link>
-            <Link href="/#improvement-plan" className="nav-link transition-colors hover:text-dark-green py-2">Improvement Plan</Link>
-            <Link href="/#bill-payments" className="nav-link transition-colors hover:text-dark-green py-2">Bill Payments</Link>
+            <a href="/" className="nav-link transition-colors hover:text-dark-green py-2">Home</a>
+            <a href="/#features" className="nav-link transition-colors hover:text-dark-green py-2">Features</a>
+            <a href="/#how-it-works" className="nav-link transition-colors hover:text-dark-green py-2">How It Works</a>
+            <a href="/#credit-report" className="nav-link transition-colors hover:text-dark-green py-2">Credit Report</a>
+            <a href="/#bill-payments" className="nav-link transition-colors hover:text-dark-green py-2">Bill Payments</a>
+            <a href="/#improvement-plan" className="nav-link transition-colors hover:text-dark-green py-2">Improvement Plan</a>
           </nav>
 
           {/* Header CTA */}
           <div className="hidden sm:flex items-center gap-4">
-            <Link href="/#download" className="bg-primary hover:bg-opacity-95 text-dark-green font-bold text-sm px-6 py-3 rounded-full transition-all duration-300 pulse-button-ring shadow-md hover:scale-[1.02] active:scale-[0.98] text-center">
+            <a href="/#download" className="bg-primary hover:bg-opacity-95 text-dark-green font-bold text-sm px-6 py-3 rounded-full transition-all duration-300 pulse-button-ring shadow-md hover:scale-[1.02] active:scale-[0.98] text-center">
               Download App
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -59,14 +60,15 @@ export default function Header() {
 
         {/* Mobile Navigation Overlay */}
         <div className={`lg:hidden absolute top-full left-0 right-0 bg-white border-b border-border-light shadow-xl py-6 px-8 flex flex-col gap-5 text-base font-semibold text-text-primary transition-all duration-300 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Home</Link>
-          <Link href="/#features" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Features</Link>
-          <Link href="/#credit-report" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Credit Report</Link>
-          <Link href="/#improvement-plan" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Improvement Plan</Link>
-          <Link href="/#bill-payments" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Bill Payments</Link>
-          <Link href="/#download" onClick={() => setMobileMenuOpen(false)} className="w-full bg-primary hover:bg-opacity-95 text-dark-green font-bold text-center py-3.5 rounded-full transition-all duration-300 mt-2 block">
+          <a href="/" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Home</a>
+          <a href="/#features" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Features</a>
+          <a href="/#how-it-works" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">How It Works</a>
+          <a href="/#credit-report" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Credit Report</a>
+          <a href="/#bill-payments" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Bill Payments</a>
+          <a href="/#improvement-plan" onClick={() => setMobileMenuOpen(false)} className="mobile-nav-link hover:text-dark-green transition-colors py-1">Improvement Plan</a>
+          <a href="/#download" onClick={() => setMobileMenuOpen(false)} className="w-full bg-primary hover:bg-opacity-95 text-dark-green font-bold text-center py-3.5 rounded-full transition-all duration-300 mt-2 block">
             Download App
-          </Link>
+          </a>
         </div>
       </header>
 

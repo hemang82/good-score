@@ -22,7 +22,7 @@ export default function ReportAnalysis() {
   });
 
   return (
-    <section id="credit-report" className="bg-white max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 relative">
+    <section id="credit-report" className="bg-white max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12 relative">
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
         {/* Copy Block Left */}

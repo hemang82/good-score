@@ -1,6 +1,6 @@
 export default function Cta() {
   return (
-    <section id="download" className="relative py-20 md:py-32 bg-bg-light overflow-hidden">
+    <section id="download" className="relative py-8 md:py-12 bg-bg-light overflow-hidden">
       
       {/* Background Magic */}
       <div className="absolute inset-0 bg-dark-green mix-blend-multiply opacity-[0.02]" />
@@ -60,25 +60,13 @@ export default function Cta() {
               
               <div className="flex flex-col gap-4 w-full">
                 {/* App Store Button */}
-                <a href="#" className="group bg-white/10 hover:bg-white text-white hover:text-dark-green flex items-center justify-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 border border-white/20 hover:border-white w-full">
-                  <svg className="h-8 w-8 fill-current shrink-0" viewBox="0 0 24 24">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.5-.63.73-1.18 1.87-1.03 2.97 1.12.09 2.27-.57 2.98-1.41z" />
-                  </svg>
-                  <div className="text-left">
-                    <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">Download on the</p>
-                    <p className="text-lg font-black -mt-1">App Store</p>
-                  </div>
+                <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
+                  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" className="h-14 w-auto" />
                 </a>
 
                 {/* Google Play Button */}
-                <a href="#" className="group bg-white/10 hover:bg-white text-white hover:text-dark-green flex items-center justify-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 border border-white/20 hover:border-white w-full">
-                  <svg className="h-8 w-8 fill-current shrink-0" viewBox="0 0 24 24">
-                    <path d="M5 3.25c-.28 0-.5.22-.5.5v16.5c0 .28.22.5.5.5.12 0 .23-.04.33-.12L12.5 14.3l-2.44-2.44-5.06-5.06L5.33 3.37c-.1-.08-.21-.12-.33-.12m9-.05l-2.88 2.88 5.13 5.13L19.5 9.1c.33-.33.33-.88 0-1.21l-5.5-5.5c-.22-.22-.44-.33-.7-.33-.1 0-.2.02-.3.05M5.63 21.05l7.7-7.7 2.88 2.88-9.25 9.25c-.27.27-.72.27-.99 0-.22-.22-.34-.52-.34-.82v-3.61zM14.5 12l5 5-2.88 2.88-5-5L14.5 12z" />
-                  </svg>
-                  <div className="text-left">
-                    <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">Get it on</p>
-                    <p className="text-lg font-black -mt-1">Google Play</p>
-                  </div>
+                <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="h-[4.2rem] w-auto -mt-1" />
                 </a>
               </div>
             </div>
