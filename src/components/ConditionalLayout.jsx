@@ -1,23 +1,39 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Chatbot from '@/components/Chatbot';
 
-export default function ConditionalLayout({ children }) {
+function LayoutContent({ children }) {
   const pathname = usePathname();
-  // We want to hide header, footer, and floating chatbot on the standalone mobile chat page
+  const searchParams = useSearchParams();
+  const [isAppMode, setIsAppMode] = useState(false);
+
+  useEffect(() => {
+    setIsAppMode(searchParams.get('app') === 'true');
+  }, [searchParams, pathname]);
+
   const isMobileChat = pathname === '/mobile-chat';
+  const shouldHideLayout = isMobileChat || isAppMode;
 
   return (
     <>
-      {!isMobileChat && <Header />}
+      {!shouldHideLayout && <Header />}
       <main className="flex-1">
         {children}
       </main>
-      {!isMobileChat && <Footer />}
-      {!isMobileChat && <Chatbot />}
+      {!shouldHideLayout && <Footer />}
+      {!shouldHideLayout && <Chatbot />}
     </>
+  );
+}
+
+export default function ConditionalLayout({ children }) {
+  return (
+    <Suspense fallback={<main className="flex-1">{children}</main>}>
+      <LayoutContent>{children}</LayoutContent>
+    </Suspense>
   );
 }
