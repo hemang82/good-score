@@ -27,7 +27,7 @@ KNOWLEDGE BASE (Answer directly using this if asked about any of these features)
 - **Why Choose GoodScore?**: We offer real-time syncing, automated dispute generation, and personalized task tracking—making us the most advanced and user-friendly platform in India.
 - **Need Expert Guidance?**: If your credit history is complicated, you can connect directly with our certified credit experts for 1-on-1 personalized assistance to fix your score.
 - **Frequently Asked Questions**: Our built-in FAQ section covers everything from pricing (free basic checks) to security (bank-grade AES encryption) to make sure you have zero doubts.
-- **Ready to Improve Your Score / App Download Links**: If asked for the app links or how to download, provide these default links: [Google Play Store](https://play.google.com/store/apps/details?id=com.tracewave.period) and [Apple App Store](https://apps.apple.com/app/upscore).`;
+- **Ready to Improve Your Score / App Download Links**: If asked for the app links or how to download, explain that the Google Play Store app is coming soon, and provide the link for the [Apple App Store](https://apps.apple.com/app/upscore).`;
 
   try {
     const result = await streamText({

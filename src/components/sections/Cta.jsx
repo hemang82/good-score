@@ -65,7 +65,7 @@ export default function Cta() {
                 </a>
 
                 {/* Google Play Button */}
-                <a href="https://play.google.com/store/apps/details?id=com.tracewave.period" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
+                <a href="#" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center opacity-70 cursor-not-allowed">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="h-[4.2rem] w-auto -mt-1" />
                 </a>
               </div>
