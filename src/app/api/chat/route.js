@@ -5,7 +5,7 @@ import { streamText } from 'ai';
 export const maxDuration = 30;
 
 export async function POST(req) {
-  const { messages } = await req.json();
+  const { messages, sessionId } = await req.json();
 
   const systemPrompt = `You are the "UPSCORE Assistant", a premium customer support AI for UPSCORE.
   UPSCORE is an advanced platform helping users analyze, correct, and sustainably build their credit profiles to reach a 750+ score.
@@ -35,6 +35,33 @@ KNOWLEDGE BASE (Answer directly using this if asked about any of these features)
       system: systemPrompt,
       messages,
       temperature: 0.7,
+      async onFinish({ text }) {
+        if (sessionId && process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
+          try {
+            const fullMessages = [...messages, { role: 'assistant', content: text }];
+            const supabaseRes = await fetch(`${process.env.SUPABASE_URL}/rest/v1/chat_logs`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'apikey': process.env.SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+                'Prefer': 'resolution=merge-duplicates'
+              },
+              body: JSON.stringify({
+                session_id: sessionId,
+                messages: fullMessages,
+                updated_at: new Date().toISOString()
+              })
+            });
+            if (!supabaseRes.ok) {
+              const errText = await supabaseRes.text();
+              console.error("Failed to save chat to Supabase:", errText);
+            }
+          } catch (dbError) {
+            console.error("Supabase Database Error:", dbError);
+          }
+        }
+      }
     });
 
     return result.toTextStreamResponse();

@@ -146,6 +146,7 @@ export default function ChatInterface({ onClose }) {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [chatSessionId, setChatSessionId] = useState('');
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -154,6 +155,15 @@ export default function ChatInterface({ onClose }) {
   useEffect(() => {
     scrollToBottom();
   }, [messages, error]);
+
+  useEffect(() => {
+    let id = sessionStorage.getItem('upscore_chat_session_id');
+    if (!id) {
+      id = 'session_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now();
+      sessionStorage.setItem('upscore_chat_session_id', id);
+    }
+    setChatSessionId(id);
+  }, []);
 
   const handleInitialOptionSelect = (option) => {
     if (isLoading) return;
@@ -240,7 +250,7 @@ export default function ChatInterface({ onClose }) {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: aiPayload })
+        body: JSON.stringify({ messages: aiPayload, sessionId: chatSessionId })
       });
 
       if (!response.ok) throw new Error('API Error');

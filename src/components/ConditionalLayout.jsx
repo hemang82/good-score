@@ -16,7 +16,8 @@ function LayoutContent({ children }) {
   }, [searchParams, pathname]);
 
   const isMobileChat = pathname === '/mobile-chat';
-  const shouldHideLayout = isMobileChat || isAppMode;
+  const isAdminRoute = pathname?.startsWith('/admin-chats') || pathname?.startsWith('/admin');
+  const shouldHideLayout = isMobileChat || isAppMode || isAdminRoute;
 
   return (
     <>
