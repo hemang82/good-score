@@ -140,14 +140,14 @@ export default function DeleteAccountPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-bg-light text-text-primary flex flex-col justify-between py-12 px-6">
+    <div className="relative min-h-[calc(100vh-6rem)] bg-bg-light text-text-primary flex flex-col justify-between py-6 md:py-8 px-6">
       
       {/* Decorative Orbs */}
       <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-primary/15 blur-[120px] pointer-events-none -z-10 animate-pulse" />
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-secondary-green/5 blur-[120px] pointer-events-none -z-10 animate-pulse" />
 
       {/* Main Content Form Card */}
-      <main className="max-w-xl w-full mx-auto my-auto z-10 space-y-6">
+      <main className="max-w-xl w-full mx-auto my-4 md:my-6 z-10 space-y-6">
         
         {/* Header Title Section */}
         <div className="flex flex-col items-center text-center space-y-4">
