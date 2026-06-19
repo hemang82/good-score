@@ -15,6 +15,13 @@ export const metadata = {
   description: "Check your credit score for free, improve your credit health, track reports, and receive personalized improvement plans with UPSCORE.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  userScalable: false,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`h-full antialiased scroll-smooth ${lato.variable}`}>

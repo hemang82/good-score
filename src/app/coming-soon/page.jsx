@@ -36,12 +36,14 @@ export default function ComingSoonPage() {
             We're working on this feature right now to make it awesome for you! It'll be ready in our next update .
           </p>
         </div>
+
       </div>
 
       {/* Footer Text */}
       <footer className="text-center text-[11px] text-text-secondary mt-8 max-w-xs leading-relaxed">
         © 2026 UPSCORE Technologies Pvt. Ltd. All rights reserved.
       </footer>
+
     </div>
   );
 }
