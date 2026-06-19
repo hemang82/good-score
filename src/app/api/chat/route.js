@@ -50,7 +50,7 @@ KNOWLEDGE BASE (Answer directly using this if asked about any of these features)
               body: JSON.stringify({
                 session_id: sessionId,
                 messages: fullMessages,
-                updated_at: new Date().toISOString()
+                created_at: new Date().toISOString()
               })
             });
             if (!supabaseRes.ok) {

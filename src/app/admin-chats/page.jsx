@@ -217,7 +217,7 @@ export default function AdminChatsPage() {
                         {session.session_id.replace('session_', '')}
                       </span>
                       <span className="text-[10px] text-text-secondary font-medium whitespace-nowrap">
-                        {formatDate(session.updated_at)}
+                        {formatDate(session.created_at)}
                       </span>
                     </div>
                     
@@ -257,7 +257,7 @@ export default function AdminChatsPage() {
                       Session: {activeSession.session_id}
                     </h3>
                     <p className="text-[10px] text-text-secondary">
-                      Last update: {formatDate(activeSession.updated_at)}
+                      Last active: {formatDate(activeSession.created_at)}
                     </p>
                   </div>
                 </div>
