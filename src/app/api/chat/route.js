@@ -39,7 +39,7 @@ KNOWLEDGE BASE (Answer directly using this if asked about any of these features)
         if (sessionId && process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
           try {
             const fullMessages = [...messages, { role: 'assistant', content: text }];
-            const supabaseRes = await fetch(`${process.env.SUPABASE_URL}/rest/v1/chat_logs`, {
+            const supabaseRes = await fetch(`${process.env.SUPABASE_URL}/rest/v1/tbl_ai_chat_logs`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

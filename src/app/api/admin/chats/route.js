@@ -26,7 +26,7 @@ export async function GET(req) {
   }
   
   try {
-    const supabaseRes = await fetch(`${supabaseUrl}/rest/v1/chat_logs?select=*&order=updated_at.desc`, {
+    const supabaseRes = await fetch(`${supabaseUrl}/rest/v1/tbl_ai_chat_logs?select=*&order=updated_at.desc`, {
       method: 'GET',
       headers: {
         'apikey': supabaseAnonKey,
