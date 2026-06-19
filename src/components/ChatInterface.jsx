@@ -478,8 +478,9 @@ export default function ChatInterface({ onClose }) {
           </svg>
 
         </button>
-        
+
       </form>
+
     </div>
   );
 }
