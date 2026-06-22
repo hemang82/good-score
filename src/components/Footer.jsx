@@ -46,7 +46,7 @@ export default function Footer() {
 
         {/* Bottom Section: Copyright & Legal Links */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
-          <span>© 2026 UPSCORE. All rights reserved.</span>
+          <span>© 2026 Tracewave Transparency PVT LTD. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
             <Link href="/faq" className="hover:text-dark-green transition-colors">FAQ</Link>
             <Link href="/contact-us" className="hover:text-dark-green transition-colors">Contact Us</Link>

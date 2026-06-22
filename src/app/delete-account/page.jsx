@@ -314,7 +314,7 @@ export default function DeleteAccountPage() {
 
       {/* Footer Text */}
       <footer className="text-center text-[10px] text-text-secondary mt-8 max-w-xs mx-auto leading-relaxed">
-        © 2026 UPSCORE Technologies Pvt. Ltd. All rights reserved. Secure bank-grade 256-bit AES encryption.
+        © 2026 Tracewave Transparency PVT LTD. All rights reserved. Secure bank-grade 256-bit AES encryption.
       </footer>
     </div>
   );

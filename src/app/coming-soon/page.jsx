@@ -41,7 +41,7 @@ export default function ComingSoonPage() {
 
       {/* Footer Text */}
       <footer className="text-center text-[11px] text-text-secondary mt-8 max-w-xs leading-relaxed">
-        © 2026 UPSCORE Technologies Pvt. Ltd. All rights reserved.
+        © 2026 Tracewave Transparency PVT LTD. All rights reserved.
       </footer>
 
     </div>

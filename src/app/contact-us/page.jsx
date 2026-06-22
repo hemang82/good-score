@@ -129,7 +129,7 @@ export default function Page() {
           </div>
           <h3 className="text-lg font-bold text-dark-green">Our Office</h3>
           <p className="text-sm text-text-secondary">
-            UPSCORE Technologies Pvt. Ltd.<br />
+            Tracewave Transparency PVT LTD.<br />
             401, Sapphire Tower, SG Highway<br />
             Ahmedabad, Gujarat 380015, India
           </p>
