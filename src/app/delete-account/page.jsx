@@ -313,9 +313,9 @@ export default function DeleteAccountPage() {
       </main>
 
       {/* Footer Text */}
-      <footer className="text-center text-[10px] text-text-secondary mt-8 max-w-xs mx-auto leading-relaxed">
+      {/* <footer className="text-center text-[10px] text-text-secondary mt-8 max-w-xs mx-auto leading-relaxed">
         © 2026 Tracewave Transparency PVT LTD. All rights reserved. Secure bank-grade 256-bit AES encryption.
-      </footer>
+      </footer> */}
     </div>
   );
 }
