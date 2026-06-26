@@ -12,7 +12,7 @@ function PrivacyPolicyContent() {
   return (
     <main className="max-w-7xl mx-auto px-6 md:px-12 pt-6 pb-12 md:py-16">
       <div className="flex flex-col lg:flex-row gap-12 items-start">
-        
+
         {/* Left Sidebar: Section Index Links (Sticky) */}
         <aside className="w-full lg:w-1/4 lg:sticky lg:top-28 space-y-4 bg-white border border-border-light rounded-premium p-6 shadow-sm">
           <h3 className="text-sm font-black text-dark-green uppercase tracking-wider mb-4">Contents</h3>
@@ -22,15 +22,16 @@ function PrivacyPolicyContent() {
             <a href="#data-usage" className="hover:text-dark-green transition-colors">2. How We Use Data</a>
             <a href="#data-sharing" className="hover:text-dark-green transition-colors">3. Data Sharing & Third Parties</a>
             <a href="#data-security" className="hover:text-dark-green transition-colors">4. Data Security</a>
-            <a href="#user-rights" className="hover:text-dark-green transition-colors">5. User Rights & Data Deletion</a>
-            <a href="#contact-us" className="hover:text-dark-green transition-colors">6. Contact Us</a>
+            <a href="#data-retention" className="hover:text-dark-green transition-colors">5. Data Retention</a>
+            <a href="#user-rights" className="hover:text-dark-green transition-colors">6. User Rights & Data Deletion</a>
+            <a href="#contact-us" className="hover:text-dark-green transition-colors">7. Contact Us</a>
             <a href="#disclaimer" className="hover:text-dark-green transition-colors">Disclaimer</a>
           </nav>
         </aside>
 
         {/* Right Panel: Policy Details */}
         <section className="flex-1 bg-white border border-border-light rounded-premium p-8 md:p-12 shadow-premium space-y-10">
-          
+
           <div className="border-b border-border-light pb-6">
             <h1 className="text-3xl md:text-4xl font-black text-dark-green tracking-tight mb-2">Privacy Policy</h1>
             <p className="text-xs text-text-secondary">Last Updated: Jun 19, 2026</p>
@@ -49,7 +50,7 @@ function PrivacyPolicyContent() {
             <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
               We only collect information that is strictly necessary to provide you with comprehensive credit dashboards, payment features, and personalized financial insights.
             </p>
-            
+
             <div className="space-y-3.5 pt-2">
               <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50">
                 <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Account Setup & Authentication</h4>
@@ -61,7 +62,7 @@ function PrivacyPolicyContent() {
               <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50">
                 <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Mandatory Profile & Financial Data</h4>
                 <p className="text-text-secondary text-xs leading-relaxed">
-                  To set up your account and retrieve your credit reports, we require your FirstName, LastName, Date of birth (18+ must), Email, Gender, Address, State, Pin Code, and PanCard. Your PAN Card is used exclusively to fetch official credit reports from authorized bureaus.
+                  To set up your account and retrieve your credit reports, we require your First Name, Last Name, Date of birth (18+ must), Email, Gender, Address, State, Pin Code, and PanCard. Your PAN Card is used exclusively to fetch official credit reports from authorized bureaus.
                 </p>
               </div>
 
@@ -109,11 +110,19 @@ function PrivacyPolicyContent() {
             <p className="text-text-secondary text-xs md:text-sm leading-relaxed font-bold text-dark-green">
               WE DO NOT SELL, LEASE, OR DISTRIBUTE YOUR FINANCIAL PROFILES TO MARKETING COMPANIES, LOAN AGENTS, OR UNVERIFIED THIRD PARTIES UNDER ANY CIRCUMSTANCES.
             </p>
-            <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50 mt-3">
-              <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Credit Bureaus</h4>
-              <p className="text-text-secondary text-xs leading-relaxed">
-                Data is shared exclusively with verified credit rating bureaus to query your score indexes.
-              </p>
+            <div className="space-y-3.5 pt-2">
+              <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50">
+                <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Credit Bureaus</h4>
+                <p className="text-text-secondary text-xs leading-relaxed">
+                  The App may use trusted third-party service providers, credit bureaus, payment processors, analytics providers, and technical infrastructure partners solely for providing the services offered within the App.
+                </p>
+              </div>
+              <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50">
+                <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Analytics & Crashlytics</h4>
+                <p className="text-text-secondary text-xs leading-relaxed">
+                  The App may use services such as Firebase Analytics and Firebase Crashlytics to improve app performance, diagnose crashes, and enhance user experience.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -121,28 +130,47 @@ function PrivacyPolicyContent() {
           <div id="data-security" className="space-y-4">
             <h2 className="text-lg md:text-xl font-bold text-dark-green">4. Data Security</h2>
             <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-              Your financial data is highly sensitive. To guarantee absolute security, all transmissions are secured with SSL/TLS. Furthermore, all database storage runs on access-restricted cloud servers compliant with global data protection standards.
+              Your financial data is highly sensitive. We implement industry-standard security measures to protect your information, including SSL/TLS encryption and access-controlled cloud infrastructure.
             </p>
           </div>
 
           {/* Section 5 */}
+          <div id="data-retention" className="space-y-4">
+            <h2 className="text-lg md:text-xl font-bold text-dark-green">5. Data Retention</h2>
+            <ul className="list-disc pl-5 space-y-2 text-text-secondary text-xs md:text-sm leading-relaxed">
+              <li>
+                We retain your personal, financial, and account-related information only for as long as necessary to provide the services offered by the App, including credit score retrieval, financial insights, transaction history, payment services, and account management.
+              </li>
+              <li>
+                Account information, profile details, and financial records remain stored while your account is active.
+              </li>
+              <li>
+                If you delete your account through the App or submit a data deletion request through our web-based deletion portal, your personal information, profile details, and associated account records will be permanently deleted from our active systems within 30 days of the deletion request, unless a longer retention period is required by applicable law, regulatory obligations, fraud prevention requirements, dispute resolution, or financial compliance requirements.
+              </li>
+              <li>
+                We do not retain personal or financial information for advertising, marketing, or sale to third parties.
+              </li>
+            </ul>
+          </div>
+
+          {/* Section 6 */}
           <div id="user-rights" className="space-y-4">
-            <h2 className="text-lg md:text-xl font-bold text-dark-green">5. User Rights & Data Deletion</h2>
+            <h2 className="text-lg md:text-xl font-bold text-dark-green">6. User Rights & Data Deletion</h2>
             <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
               You retain absolute ownership and control over your data:
             </p>
             <div className="space-y-3.5 pt-2">
               <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50">
-                <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Edit Profile (Optional)</h4>
+                <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Edit Profile</h4>
                 <p className="text-text-secondary text-xs leading-relaxed">
-                  You can edit your FirstName, LastName, Email, and Pin Code directly through the app interface.
+                  You can review, edit, or modify your profile details at any time directly through the app interface.
                 </p>
               </div>
 
               <div className="bg-bg-light/60 rounded-xl p-4 border border-border-light/50">
                 <h4 className="font-bold text-xs md:text-sm text-dark-green mb-1">Account and Data Deletion (Via App)</h4>
                 <p className="text-text-secondary text-xs leading-relaxed">
-                  If you wish to stop using the app, you can permanently delete your account by navigating to the settings and selecting "Delete Account".
+                  If you wish to stop using the app, you can permanently delete your account by navigating to the side navigation menu and selecting "Delete Account". Upon receiving this request, all your personal information, profile details, and associated account records will be permanently and irreversibly deleted from our active systems within 30 days, except where retention is required by law.
                 </p>
               </div>
 
@@ -153,17 +181,17 @@ function PrivacyPolicyContent() {
                   <Link href={deleteAccountUrl} className="text-secondary-green font-bold hover:underline">
                     Delete Account Request Form
                   </Link>
-                  . Upon deletion, your details will be instantly and permanently wiped from our database servers.
+                  . Upon deletion, your details will be permanently and irreversibly deleted from our active systems within 30 days, except where retention is required by law.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Section 6 */}
+          {/* Section 7 */}
           <div id="contact-us" className="space-y-4">
-            <h2 className="text-lg md:text-xl font-bold text-dark-green">6. Contact Us</h2>
+            <h2 className="text-lg md:text-xl font-bold text-dark-green">7. Contact Us</h2>
             <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-              For any privacy-related queries or to request data assistance, please contact us at:
+              For any privacy-related queries or to request data assistance, please contact us:
             </p>
             <p className="text-dark-green font-bold text-xs md:text-sm pt-1">
               Email:{' '}
