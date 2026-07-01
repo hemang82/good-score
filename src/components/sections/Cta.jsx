@@ -60,15 +60,14 @@ export default function Cta() {
               
               <div className="flex flex-col gap-4 w-full">
                 {/* App Store Button */}
-                <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
+                <a href="https://apps.apple.com/app/id6781997241" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
                   <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" className="h-14 w-auto" />
                 </a>
 
                 {/* Google Play Button */}
-                <a href="#" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
+                <a href="https://play.google.com/store/apps/details?id=com.tracewave.upscore" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105 w-full flex justify-center">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="h-[4.2rem] w-auto -mt-1" />
                 </a>
-                .
               </div>
             </div>
           </div>
